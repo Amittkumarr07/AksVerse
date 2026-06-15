@@ -14,13 +14,13 @@ html {
 }
 
 :root {
-  /* Dark Theme (Material 3 Expressive) */
   --bg-color: #0B131E;
   --bg-surface: #1A232E;
   --border-color: #40484C;
   
   --primary-color: #5DF8D8;
   --tertiary-color: #DDB8FF; 
+  --icon-color: #E5DCD1;
   
   --text-on-bg: #E2E2E9; 
   --text-on-surface: #C4C7C5; 
@@ -29,13 +29,13 @@ html {
 }
 
 [data-theme="light"] {
-  /* Light Theme (Material 3 Expressive) */
   --bg-color: #F4FAFA;
   --bg-surface: #E8F2F1;
   --border-color: #BFC9C8;
   
   --primary-color: #006A5B; 
   --tertiary-color: #714BA5;
+  --icon-color: #1A232E;
   
   --text-on-bg: #161C1C; 
   --text-on-surface: #3F4848; 
@@ -98,6 +98,7 @@ header, section {
 .hd-about span {
   color: var(--primary-color);
 }
+
 /* About Section */
 .about-main-h {
   font-size: 3rem;
@@ -147,6 +148,35 @@ header, section {
   100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
 }
 
+/* About Section Tech Stack Pills */
+.tech-stack {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.stack-pill {
+  background-color: var(--bg-surface);
+  color: var(--primary-color);
+  text-align: center;
+  border: 1px solid var(--border-color);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.stack-pill:hover {
+  background-color: var(--primary-color);
+  color: var(--text-on-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Projects & Skills Layout */
 #projects-Skills {
   display: flex;
@@ -164,16 +194,22 @@ header, section {
   box-shadow: 0 4px 6px #0f0f0f0d;
 }
 
-.projects-h, .skills {
+.projects h2, .skills {
   font-size: 2.5rem;
   margin-bottom: 20px;
   border-bottom: 2px solid var(--border-color);
   padding-bottom: 10px;
 }
-.projects span {
+.icon-span {
   font-size: 2.5rem;
   color: #0c9c78;
 }
+.pj-spn{
+  font-weight: 400; 
+  font-size: 0.95rem; 
+  color: var(--text-on-surface);
+}
+
 
 .proj-ul li, .web-ul li, .pg-lang + ul li {
   font-size: 1.1rem;
@@ -191,9 +227,23 @@ header, section {
 
 .skills-dv span {
   font-size: 1.5rem;
-  color: #006A5B;
+  color: var(--icon-color);
 }
 /* Certificates Layout */
+.courses {
+  flex: 1;
+  min-width: 300px;
+  background-color: var(--bg-surface);
+  padding: 30px;
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px #0f0f0f0d;
+}
+.cc_h2 {
+  /* margin-top: 40px; */
+  font-size: 2rem;
+  color: var(--text-on-bg);
+}
 .course-cert {
   background-color: var(--bg-color);
   border: 1px solid var(--border-color);
@@ -205,6 +255,7 @@ header, section {
   align-items: flex-start;
   gap: 8px;
 }
+
 
 .cert-date {
   font-size: 0.9rem;
@@ -281,6 +332,16 @@ header, section {
 .contact-icon a:hover i {
   color: var(--text-on-primary);
 }
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8 ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Navigation Bar */
 .nav-bar {
@@ -328,6 +389,7 @@ header, section {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  color: var(--icon-color);
   background-color: var(--bg-surface);
   border: 1px solid var(--border-color);
   display: flex;
@@ -387,29 +449,3 @@ header, section {
   }
 }
 
-/* About Section Tech Stack Pills */
-.tech-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.stack-pill {
-  background-color: var(--bg-surface);
-  color: var(--primary-color);
-  border: 1px solid var(--border-color);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.stack-pill:hover {
-  background-color: var(--primary-color);
-  color: var(--text-on-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}

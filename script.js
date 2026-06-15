@@ -68,3 +68,29 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+//View contact card annimation
+document.addEventListener("DOMContentLoaded", () => {
+  const revealElements = document.querySelectorAll(".reveal");
+
+    const observerOptions = {
+    root: null,         
+    rootMargin: "0px", 
+    threshold: 0.15     
+  };
+
+    const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active"); 
+        observer.unobserve(entry.target);     
+      }
+    });
+  };
+  
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  revealElements.forEach(element => {
+    observer.observe(element);
+  });
+});

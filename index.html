@@ -10,13 +10,16 @@
 </head>
 
 <body class="main">
-  
+
   <nav class="nav-bar" aria-label="Main Navigation">
     <a href="#about" class="nav-btn" aria-label="Go to About section">
       <i class="fa-solid fa-house" aria-hidden="true"></i>
     </a>
     <a href="#projects-Skills" class="nav-btn" aria-label="Go to Projects and Skills section">
       <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+    </a>
+    <a href="#courses" class="nav-btn" aria-label="Go to Courses section">
+        <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
     </a>
     <a href="#contact" class="nav-btn" aria-label="Go to Contact section">
       <i class="fa-solid fa-circle-user" aria-hidden="true"></i>
@@ -29,25 +32,25 @@
               <h1><span class="hi-spn">Hi,</span> My name is <span class="nm-spn">Amit Kumar.</span></h1>
               <h3 class="type">I am a <span id="changing-txt"></span><span class="cursor"></span></h3>
           </div>
-      
+
           <div class="about-content">
               <div class="about-text">
                   <h2 class="about-main-h">About <span class="ab-spn">me</span></h2>
                   <p class="about-main-p">I am a Computer Science and Engineering student at <span>Govt. Polytechnic Raghopur, Supaul</span>.</p>
                   <p class="about-main-p">I specialize in front-end web development and software logic. I built this portfolio from scratch using vanilla JavaScript and CSS to demonstrate my grasp of responsive design and custom themes. Currently, I am expanding my foundation in C and Python.</p>
-                  
+
                   <div class="tech-stack">
                       <span class="stack-pill">JavaScript</span>
                       <span class="stack-pill">HTML5 & CSS3</span>
                       <span class="stack-pill">C</span>
                       <span class="stack-pill">Python</span>
                   </div>
-                  
+
                   <div class="about-actions" style="margin-top: 30px;">
                       <a href="#projects-Skills" class="view-btn">See My Work</a>
                   </div>
               </div>
-              
+
               <div class="about-visual">
                   <div class="profile-shape" aria-hidden="true"></div>
               </div>
@@ -56,25 +59,25 @@
 
       <section id="projects-Skills">
           <div class="projects">
-              <h2 class="projects-h">Projects</h2>
+              <h2>Projects</h2>
               <ol class="proj-ul">
                   <li>
-                    <span><i class="fa-brands fa-square-dribbble" aria-hidden="true"></i></span>
+                    <span class="icon-span"><i class="fa-brands fa-square-dribbble" aria-hidden="true"></i></span>
                     <div>
                       <strong>Simple Portfolio Website</strong><br>
-                      <span style="font-weight: 400; font-size: 0.95rem; color: var(--text-on-surface);">A fully responsive personal portfolio featuring a custom light/dark theme toggle and a dynamic typing effect, built without external UI frameworks.</span>
+                      <span class="pj-spn">A fully responsive personal portfolio featuring a custom light/dark theme toggle and a dynamic typing effect, built without external UI frameworks.</span>
                     </div>
                   </li>
                   <li style="margin-top: 20px;">
-                    <span><i class="fa-solid fa-calculator" aria-hidden="true"></i></span>
+                    <span class="icon-span"><i class="fa-solid fa-calculator" aria-hidden="true"></i></span>
                     <div>
                       <strong>Basic Calculator using C</strong><br>
-                      <span style="font-weight: 400; font-size: 0.95rem; color: var(--text-on-surface);">A command-line application that handles core arithmetic operations, demonstrating proficiency in C syntax and control structures.</span>
+                      <span class="pj-spn">A command-line application that handles core arithmetic operations, demonstrating proficiency in C syntax and control structures.</span>
                     </div>
                   </li>
               </ol>
           </div>
-          
+
           <div class="skills-dv">
               <h2 class="skills">Skills <i class="fa-solid fa-code" aria-hidden="true"></i></h2>
               <h3 class="Web-dev">Web Development</h3>
@@ -83,21 +86,28 @@
                   <li><span><i class="fa-brands fa-css3-alt" aria-hidden="true"></i></span>CSS</li>
                   <li><span><i class="fa-brands fa-square-js" aria-hidden="true"></i></span>JavaScript</li>
               </ul>
-              
+
               <h3 class="pg-lang">Programming Languages</h3>
               <ul>
                   <li><span><i class="fa-solid fa-c" aria-hidden="true"></i></span>C Language</li>
                   <li><span><i class="fa-brands fa-python" aria-hidden="true"></i></span>Python</li>
               </ul>
-              
-              <h3 class="courses">Courses & Certificates</h3>
+              <h3 class="pg-lang">Currently Learning</h3>
+              <ul>
+                <li><span><i class="fa-brands fa-rust"></i></span>Rust</li>
+              </ul>
+        </section> 
+
+        <section id="courses">    
+            <div class="courses">
+              <h2 class="cc_h2">Courses Certificates</h2>
               <div class="course-cert">
                  <h3>Web Technology</h3>
                   <p>State Board of Technical Education, Bihar (SBTE)</p>
                   <p class="cert-date">Completed: January 2026</p>
                   <a href="https://drive.google.com/file/d/1xVsskvdO_MdWraIfDVA3SD_SXMENlk5v/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
               </div>
-        
+
               <div class="course-cert">
                   <h3>C Programming</h3>
                   <p>State Board of Technical Education, Bihar (SBTE)</p>
@@ -113,11 +123,11 @@
               </div>
           </div>
       </section>
-      
+
       <section id="contact">
           <div class="contact-card">
               <h2>Contact <span class="cc-spn">me</span></h2>
-                 <div class="contact-icon">
+                 <div class="contact-icon reveal">
                       <a href="https://www.linkedin.com/in/amittkumar7" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn">
                          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
                       </a>
@@ -126,6 +136,9 @@
                       </a>
                       <a href="mailto:amitkumarhero980140@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Send me an email">
                         <i class="fa-solid fa-envelope-open" aria-hidden="true"></i>
+                      </a>
+                      <a href="https://www.instagram.com/amitt_kumar_7?igsh=MWl6czRhaGxpZGwzMg==" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                       </a>
                  </div>
           </div>
