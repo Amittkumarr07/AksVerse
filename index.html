@@ -13,139 +13,200 @@
 
   <nav class="nav-bar" aria-label="Main Navigation">
     <a href="#about" class="nav-btn" aria-label="Go to About section">
-      <i class="fa-solid fa-house" aria-hidden="true"></i>
+      <span class="nav-tag">~/about</span>
     </a>
     <a href="#projects-Skills" class="nav-btn" aria-label="Go to Projects and Skills section">
-      <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+      <span class="nav-tag">~/work</span>
     </a>
     <a href="#courses" class="nav-btn" aria-label="Go to Courses section">
-        <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+      <span class="nav-tag">~/courses</span>
     </a>
     <a href="#contact" class="nav-btn" aria-label="Go to Contact section">
-      <i class="fa-solid fa-circle-user" aria-hidden="true"></i>
+      <span class="nav-tag">~/contact</span>
     </a>
   </nav>
 
   <main>
-      <section id="about">
-          <div class="hd-about">
-              <h1><span class="hi-spn">Hi,</span> My name is <span class="nm-spn">Amit Kumar.</span></h1>
-              <h3 class="type">I am a <span id="changing-txt"></span><span class="cursor"></span></h3>
-          </div>
-
-          <div class="about-content">
-              <div class="about-text">
-                  <h2 class="about-main-h">About <span class="ab-spn">me</span></h2>
-                  <p class="about-main-p">I am a Computer Science and Engineering student at <span>Govt. Polytechnic Raghopur, Supaul</span>.</p>
-                  <p class="about-main-p">I specialize in front-end web development and software logic. I built this portfolio from scratch using vanilla JavaScript and CSS to demonstrate my grasp of responsive design and custom themes. Currently, I am expanding my foundation in C and Python.</p>
-
-                  <div class="tech-stack">
-                      <span class="stack-pill">JavaScript</span>
-                      <span class="stack-pill">HTML5 & CSS3</span>
-                      <span class="stack-pill">C</span>
-                      <span class="stack-pill">Python</span>
-                  </div>
-
-                  <div class="about-actions" style="margin-top: 30px;">
-                      <a href="#projects-Skills" class="view-btn">See My Work</a>
-                  </div>
+      <section id="about" class="gutter-section">
+          <div class="line-no" aria-hidden="true">01</div>
+          <div class="section-inner">
+              <div class="hd-about">
+                  <p class="path-label">~/amit-kumar/intro.md</p>
+                  <h1><span class="hi-spn">Hi, I'm</span> <span class="nm-spn">Amit Kumar.</span></h1>
+                  <h3 class="type"><span class="prompt-sym">&gt;</span> I am a <span id="changing-txt"></span><span class="cursor"></span></h3>
               </div>
 
-              <div class="about-visual">
-                  <div class="profile-shape" aria-hidden="true"></div>
+              <div class="about-content">
+                  <div class="about-text">
+                      <h2 class="about-main-h"><span class="hash">#</span> About me</h2>
+                      <p class="about-main-p">I am a Computer Science and Engineering student at <span>Govt. Polytechnic Raghopur, Supaul</span>.</p>
+                      <p class="about-main-p">I specialize in front-end web development and software logic. I built this portfolio from scratch using vanilla JavaScript and CSS to demonstrate my grasp of responsive design and custom themes. Currently, I am expanding my foundation in C and Python.</p>
+
+                      <div class="tech-stack">
+                          <span class="stack-pill">JavaScript</span>
+                          <span class="stack-pill">HTML5 & CSS3</span>
+                          <span class="stack-pill">C</span>
+                          <span class="stack-pill">Python</span>
+                      </div>
+
+                      <div class="about-actions">
+                          <a href="#projects-Skills" class="view-btn">See my work</a>
+                          <a href="#contact" class="view-btn ghost-btn">Get in touch</a>
+                      </div>
+                  </div>
+
+                  <div class="about-visual" aria-hidden="true">
+                      <div class="code-card">
+                          <div class="code-card-head">
+                              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+                              <span class="code-card-title">profile.json</span>
+                          </div>
+                          <pre class="code-card-body"><span class="cm-key">{</span>
+  <span class="cm-prop">"name"</span>: <span class="cm-str">"Amit Kumar"</span>,
+  <span class="cm-prop">"role"</span>: <span class="cm-str">"CSE Student"</span>,
+  <span class="cm-prop">"focus"</span>: <span class="cm-str">"frontend"</span>,
+  <span class="cm-prop">"learning"</span>: [<span class="cm-str">"Rust"</span>],
+  <span class="cm-prop">"available"</span>: <span class="cm-bool">true</span>
+<span class="cm-key">}</span></pre>
+                      </div>
+                  </div>
               </div>
           </div>
       </section>
 
-      <section id="projects-Skills">
-          <div class="projects">
-              <h2>Projects</h2>
-              <ul class="proj-ul">
-                  <li>
-                    <div>
-                      <strong>Simple Portfolio Website <span><i class="fa-solid fa-briefcase" aria-hidden="true"></i></span></strong><br>
-                      <span class="pj-spn">A fully responsive personal portfolio featuring a custom light/dark theme toggle and a dynamic typing effect, built without external UI frameworks.</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <strong>Basic Calculator using C <span><i class="fa-solid fa-calculator" aria-hidden="true"></i></span></strong><br>
-                      <span class="pj-spn">A command-line application that handles core arithmetic operations, demonstrating proficiency in C syntax and control structures.</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <strong>Buy<span class="buyit-span">it</span> <span><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></span></strong><br>
-                      <span class="pj-spn">An interactive e-commerce web application built from scratch using HTML, CSS, and JavaScript. This project was developed as a 2nd-year internship project to demonstrate core frontend development skills, state management, and third-party API integration.</span><br>
-                      <a href="https://github.com/Amittkumarr07/Buyit">Click here to view Project</a>
-                    </div>
-                  </li>
-              </ul>
-          </div>
+      <section id="projects-Skills" class="gutter-section">
+          <div class="line-no" aria-hidden="true">02</div>
+          <div class="section-inner work-grid">
+              <div class="projects">
+                  <p class="path-label">~/amit-kumar/projects</p>
+                  <h2><span class="hash">#</span> Projects</h2>
+                  <ul class="proj-ul">
+                      <li class="proj-card">
+                          <div class="proj-card-top">
+                              <strong>Simple Portfolio Website</strong>
+                              <span class="proj-status status-live">live</span>
+                          </div>
+                          <p class="pj-spn">A fully responsive personal portfolio featuring a custom light/dark theme toggle and a dynamic typing effect, built without external UI frameworks.</p>
+                          <div class="proj-tags">
+                              <span class="proj-tag">HTML</span>
+                              <span class="proj-tag">CSS</span>
+                              <span class="proj-tag">JavaScript</span>
+                          </div>
+                          <div class="proj-links">
+                              <span class="proj-link disabled"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> You're here</span>
+                          </div>
+                      </li>
 
-          <div class="skills-dv">
-              <h2 class="skills">Skills <i class="fa-solid fa-code" aria-hidden="true"></i></h2>
-              <h3 class="Web-dev">Web Development</h3>
-              <ul class="web-ul">
-                  <li><span><i class="fa-brands fa-html5" aria-hidden="true"></i></span>HTML</li>
-                  <li><span><i class="fa-brands fa-css3-alt" aria-hidden="true"></i></span>CSS</li>
-                  <li><span><i class="fa-brands fa-square-js" aria-hidden="true"></i></span>JavaScript</li>
-              </ul>
+                      <li class="proj-card">
+                          <div class="proj-card-top">
+                              <strong>Basic Calculator (C)</strong>
+                              <span class="proj-status status-cli">cli</span>
+                          </div>
+                          <p class="pj-spn">A command-line application that handles core arithmetic operations, demonstrating proficiency in C syntax and control structures.</p>
+                          <div class="proj-tags">
+                              <span class="proj-tag">C</span>
+                          </div>
+                          <div class="proj-links">
+                              <span class="proj-link disabled"><i class="fa-brands fa-github" aria-hidden="true"></i> Repo coming soon</span>
+                          </div>
+                      </li>
 
-              <h3 class="pg-lang">Programming Languages</h3>
-              <ul>
-                  <li><span><i class="fa-solid fa-c" aria-hidden="true"></i></span>C Language</li>
-                  <li><span><i class="fa-brands fa-python" aria-hidden="true"></i></span>Python</li>
-              </ul>
-              <h3 class="pg-lang">Currently Learning</h3>
-              <ul>
-                <li><span><i class="fa-brands fa-rust"></i></span>Rust</li>
-              </ul>
-        </section>
-
-        <section id="courses">
-            <div class="courses">
-              <h2 class="cc_h2">Courses Certificates</h2>
-              <div class="course-cert">
-                 <h3>Web Technology</h3>
-                  <p>State Board of Technical Education, Bihar (SBTE)</p>
-                  <p class="cert-date">Completed: January 2026</p>
-                  <a href="https://drive.google.com/file/d/1xVsskvdO_MdWraIfDVA3SD_SXMENlk5v/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
+                      <li class="proj-card featured">
+                          <div class="proj-card-top">
+                              <strong>Buy<span class="buyit-span">it</span></strong>
+                              <span class="proj-status status-live">live</span>
+                          </div>
+                          <p class="pj-spn">An interactive e-commerce web application built from scratch as a 2nd-year internship project &mdash; covering state management, cart logic, and third-party API integration.</p>
+                          <div class="proj-tags">
+                              <span class="proj-tag">HTML</span>
+                              <span class="proj-tag">CSS</span>
+                              <span class="proj-tag">JavaScript</span>
+                              <span class="proj-tag">REST API</span>
+                          </div>
+                          <div class="proj-links">
+                              <a href="https://github.com/Amittkumarr07/Buyit" target="_blank" rel="noopener noreferrer" class="proj-link">
+                                  <i class="fa-brands fa-github" aria-hidden="true"></i> View code
+                              </a>
+                          </div>
+                      </li>
+                  </ul>
               </div>
 
-              <div class="course-cert">
-                  <h3>C Programming</h3>
-                  <p>State Board of Technical Education, Bihar (SBTE)</p>
-                  <p class="cert-date">Completed: March 2026</p>
-                  <a href="https://drive.google.com/file/d/1vbfNjIehzxhpXeldcPNMzduxjz30cPKG/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
-              </div>
+              <div class="skills-dv">
+                  <p class="path-label">~/amit-kumar/skills</p>
+                  <h2 class="skills"><span class="hash">#</span> Skills</h2>
+                  <h3 class="Web-dev">Web Development</h3>
+                  <ul class="web-ul">
+                      <li><span><i class="fa-brands fa-html5" aria-hidden="true"></i></span>HTML</li>
+                      <li><span><i class="fa-brands fa-css3-alt" aria-hidden="true"></i></span>CSS</li>
+                      <li><span><i class="fa-brands fa-square-js" aria-hidden="true"></i></span>JavaScript</li>
+                  </ul>
 
-              <div class="course-cert">
-                 <h3>Introduction to Cybersecurity</h3>
-                 <p>Cisco Networking Academy</p>
-                 <p class="cert-date">Completed: March 2026</p>
-                 <a href="https://drive.google.com/file/d/1BJT2VEJ16rqidTtsv-nPBJXA5o8P_ZrZ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
+                  <h3 class="pg-lang">Programming Languages</h3>
+                  <ul>
+                      <li><span><i class="fa-solid fa-c" aria-hidden="true"></i></span>C Language</li>
+                      <li><span><i class="fa-brands fa-python" aria-hidden="true"></i></span>Python</li>
+                  </ul>
+                  <h3 class="pg-lang">Currently Learning</h3>
+                  <ul>
+                      <li><span><i class="fa-brands fa-rust" aria-hidden="true"></i></span>Rust <span class="learning-tag">in progress</span></li>
+                  </ul>
               </div>
           </div>
       </section>
 
-      <section id="contact">
-          <div class="contact-card">
-              <h2>Contact <span class="cc-spn">me</span></h2>
-                 <div class="contact-icon reveal">
-                      <a href="https://www.linkedin.com/in/amittkumar7" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn">
-                         <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-                      </a>
-                      <a href="https://github.com/Amittkumarr07" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub">
-                         <i class="fa-brands fa-github" aria-hidden="true"></i>
-                      </a>
-                      <a href="mailto:amitkumarhero980140@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Send me an email">
-                        <i class="fa-solid fa-envelope-open" aria-hidden="true"></i>
-                      </a>
-                      <a href="https://www.instagram.com/amitt_kumar_7?igsh=MWl6czRhaGxpZGwzMg==" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram">
-                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                      </a>
-                 </div>
+        <section id="courses" class="gutter-section">
+            <div class="line-no" aria-hidden="true">03</div>
+            <div class="section-inner">
+                <div class="courses">
+                  <p class="path-label">~/amit-kumar/courses</p>
+                  <h2 class="cc_h2"><span class="hash">#</span> Courses &amp; Certificates</h2>
+                  <div class="course-cert">
+                     <h3>Web Technology</h3>
+                      <p>State Board of Technical Education, Bihar (SBTE)</p>
+                      <p class="cert-date">Completed: January 2026</p>
+                      <a href="https://drive.google.com/file/d/1xVsskvdO_MdWraIfDVA3SD_SXMENlk5v/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
+                  </div>
+
+                  <div class="course-cert">
+                      <h3>C Programming</h3>
+                      <p>State Board of Technical Education, Bihar (SBTE)</p>
+                      <p class="cert-date">Completed: March 2026</p>
+                      <a href="https://drive.google.com/file/d/1vbfNjIehzxhpXeldcPNMzduxjz30cPKG/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
+                  </div>
+
+                  <div class="course-cert">
+                     <h3>Introduction to Cybersecurity</h3>
+                     <p>Cisco Networking Academy</p>
+                     <p class="cert-date">Completed: March 2026</p>
+                     <a href="https://drive.google.com/file/d/1BJT2VEJ16rqidTtsv-nPBJXA5o8P_ZrZ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <section id="contact" class="gutter-section">
+          <div class="line-no" aria-hidden="true">04</div>
+          <div class="section-inner">
+              <div class="contact-card">
+                  <p class="path-label">~/amit-kumar/contact</p>
+                  <h2><span class="hash">#</span> Get in touch</h2>
+                  <p class="contact-sub">Open to internships, freelance front-end work, and collaboration.</p>
+                     <div class="contact-icon reveal">
+                          <a href="https://www.linkedin.com/in/amittkumar7" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn">
+                             <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                          </a>
+                          <a href="https://github.com/Amittkumarr07" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub">
+                             <i class="fa-brands fa-github" aria-hidden="true"></i>
+                          </a>
+                          <a href="mailto:amitkumarhero980140@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Send me an email">
+                            <i class="fa-solid fa-envelope-open" aria-hidden="true"></i>
+                          </a>
+                          <a href="https://www.instagram.com/amitt_kumar_7?igsh=MWl6czRhaGxpZGwzMg==" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram">
+                            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                          </a>
+                     </div>
+              </div>
           </div>
       </section>
   </main>
