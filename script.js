@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     
     // --- Typing Effect Logic ---
-    const words = ["Developer.", "Designer.", "Video Editor."];
+    const words = ["developer.", "designer.", "video editor."];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -43,6 +43,20 @@ document.addEventListener("DOMContentLoaded", () => {
         typeEffect();
     }
 
+
+    // --- Show More Courses Logic ---
+    const toggleCoursesBtn = document.getElementById('toggle-courses');
+    const extraCourses = document.getElementById('extra-courses');
+
+    if (toggleCoursesBtn && extraCourses) {
+        toggleCoursesBtn.addEventListener('click', () => {
+            const isOpen = extraCourses.classList.toggle('open');
+            toggleCoursesBtn.setAttribute('aria-expanded', isOpen);
+            toggleCoursesBtn.innerHTML = isOpen
+                ? 'Show less <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>'
+                : 'Show all certificates <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>';
+        });
+    }
 
     // --- Theme Switcher Logic ---
     const toggleButton = document.getElementById('theme-toggle');

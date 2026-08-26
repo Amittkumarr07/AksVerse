@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap");
 
 * {
     margin: 0;
@@ -14,31 +14,33 @@ html {
 }
 
 :root {
-    --bg-color: #0b131e;
-    --bg-surface: #1a232e;
-    --border-color: #40484c;
+    --bg-color: #060b12;
+    --bg-surface: #0d1520;
+    --border-color: #1f2f3d;
 
-    --primary-color: #5df8d8;
-    --tertiary-color: #ddb8ff;
-    --icon-color: #e5dcd1;
+    --primary-color: #22d3ee;
+    --tertiary-color: #38f9d7;
+    --icon-color: #a9c4d4;
 
-    --text-on-bg: #e2e2e9;
-    --text-on-surface: #c4c7c5;
-    --text-on-primary: #00382e;
-    --text-on-tertiary: #4a1a7a;
+    --text-on-bg: #dce7ee;
+    --text-on-surface: #7d95a3;
+    --text-on-primary: #00232b;
+    --text-on-tertiary: #00302a;
+
+    --mono-font: "JetBrains Mono", "Courier New", monospace;
 }
 
 [data-theme="light"] {
-    --bg-color: #f4fafa;
-    --bg-surface: #e8f2f1;
-    --border-color: #bfc9c8;
+    --bg-color: #f2f7f9;
+    --bg-surface: #e4eef1;
+    --border-color: #c3d3d9;
 
-    --primary-color: #006a5b;
-    --tertiary-color: #714ba5;
-    --icon-color: #1a232e;
+    --primary-color: #0891a8;
+    --tertiary-color: #0d9488;
+    --icon-color: #12303a;
 
-    --text-on-bg: #161c1c;
-    --text-on-surface: #3f4848;
+    --text-on-bg: #0c1e26;
+    --text-on-surface: #3d5560;
     --text-on-primary: #ffffff;
     --text-on-tertiary: #ffffff;
 }
@@ -91,16 +93,41 @@ section {
     margin-bottom: 40px;
 }
 
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono-font);
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.status-pill .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    box-shadow: 0 0 8px var(--primary-color);
+    animation: blink 1.6s infinite;
+}
+
 .hd-about h1 {
     font-size: 3.5rem;
     font-weight: 700;
     line-height: 1.2;
+    font-family: var(--mono-font);
 }
 
 .hd-about h3 {
     font-size: 2rem;
     font-weight: 400;
     color: var(--text-on-surface);
+    font-family: var(--mono-font);
 }
 .hd-about span {
     color: var(--primary-color);
@@ -110,6 +137,7 @@ section {
 .about-main-h {
     font-size: 3rem;
     margin-bottom: 20px;
+    font-family: var(--mono-font);
 }
 
 .about-main-p {
@@ -139,30 +167,74 @@ section {
     align-items: center;
 }
 
-.profile-shape {
-    width: 320px;
-    height: 320px;
-    background: linear-gradient(
-        135deg,
-        var(--primary-color),
-        var(--tertiary-color)
-    );
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    animation: morph 8s ease-in-out infinite;
-    border: 4px solid var(--bg-surface);
+.terminal-card {
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    font-family: var(--mono-font);
 }
 
-@keyframes morph {
-    0% {
-        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    }
-    50% {
-        border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
-    }
-    100% {
-        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    }
+.terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.t-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+}
+
+.t-dot:nth-child(1) {
+    background-color: #ff5f56;
+}
+.t-dot:nth-child(2) {
+    background-color: #ffbd2e;
+}
+.t-dot:nth-child(3) {
+    background-color: #27c93f;
+}
+
+.terminal-title {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--text-on-surface);
+}
+
+.terminal-body {
+    padding: 22px 20px;
+    font-size: 0.95rem;
+    line-height: 1.9;
+}
+
+.t-prompt {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.t-out {
+    color: var(--text-on-bg);
+    padding-left: 20px;
+    margin-bottom: 8px;
+}
+
+.t-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1em;
+    background-color: var(--primary-color);
+    vertical-align: middle;
+    animation: blink 0.8s infinite;
 }
 
 /* About Section Tech Stack Pills */
@@ -184,6 +256,7 @@ section {
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 600;
+    font-family: var(--mono-font);
     transition: all 0.3s ease;
 }
 
@@ -218,6 +291,7 @@ section {
     margin-bottom: 20px;
     border-bottom: 2px solid var(--border-color);
     padding-bottom: 10px;
+    font-family: var(--mono-font);
 }
 
 .pj-spn {
@@ -270,6 +344,7 @@ section {
     /* margin-top: 40px; */
     font-size: 2rem;
     color: var(--text-on-bg);
+    font-family: var(--mono-font);
 }
 .course-cert {
     background-color: var(--bg-color);
@@ -287,6 +362,55 @@ section {
     font-size: 0.9rem;
     color: var(--text-on-surface);
     margin-bottom: 10px;
+}
+
+/* Extra courses collapse */
+.course-cert-extra {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+        grid-template-rows 0.4s ease,
+        opacity 0.3s ease;
+}
+
+.course-cert-extra.open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.course-cert-extra > div {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.course-cert-extra .course-cert {
+    margin-top: 15px;
+}
+
+.courses-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.courses-toggle-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--text-on-primary);
+}
+
+.courses-toggle-btn i {
+    transition: transform 0.3s ease;
 }
 
 /* Buttons */
@@ -319,6 +443,7 @@ section {
 #contact h2 {
     font-size: 2.5rem;
     margin-bottom: 30px;
+    font-family: var(--mono-font);
 }
 
 .contact-icon {
@@ -471,8 +596,11 @@ section {
         gap: 40px;
     }
 
-    .profile-shape {
-        width: 250px;
-        height: 250px;
+    .terminal-card {
+        max-width: 100%;
+    }
+
+    .terminal-body {
+        font-size: 0.85rem;
     }
 }

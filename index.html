@@ -29,8 +29,9 @@
   <main>
       <section id="about">
           <div class="hd-about">
+			  <span class="status-pill"><span class="dot" aria-hidden="true"></span>AksVerse</span>
               <h1><span class="hi-spn">Hi,</span> My name is <span class="nm-spn">Amit Kumar.</span></h1>
-              <h3 class="type">I am a <span id="changing-txt"></span><span class="cursor"></span></h3>
+              <h3 class="type">I am a/an <span id="changing-txt"></span><span class="cursor"></span></h3>
           </div>
 
           <div class="about-content">
@@ -52,7 +53,25 @@
               </div>
 
               <div class="about-visual">
-                  <div class="profile-shape" aria-hidden="true"></div>
+                  <div class="terminal-card" aria-hidden="true">
+                      <div class="terminal-bar">
+                          <span class="t-dot"></span>
+                          <span class="t-dot"></span>
+                          <span class="t-dot"></span>
+                          <span class="terminal-title">portfolio@aks_verse</span>
+                      </div>
+                      <div class="terminal-body">
+                          <p><span class="t-prompt">$</span> whoami</p>
+                          <p class="t-out">amit kumar</p>
+                          <p><span class="t-prompt">$</span> role</p>
+                          <p class="t-out">cse student, web developer</p>
+                          <p><span class="t-prompt">$</span> stack</p>
+                          <p class="t-out">html . css . js . c . python</p>
+                          <p><span class="t-prompt">$</span> status</p>
+                          <p class="t-out">learning, building, shipping</p>
+                          <p><span class="t-prompt">$</span> <span class="t-cursor"></span></p>
+                      </div>
+                  </div>
               </div>
           </div>
       </section>
@@ -97,16 +116,43 @@
                   <li><span><i class="fa-solid fa-c" aria-hidden="true"></i></span>C Language</li>
                   <li><span><i class="fa-brands fa-python" aria-hidden="true"></i></span>Python</li>
               </ul>
-              <h3 class="pg-lang">Currently Learning</h3>
+              
+              <h3 class="pg-lang">Mobile Video Editing</h3>
               <ul>
-                <li><span><i class="fa-brands fa-rust"></i></span>Rust</li>
+                  <li><span><i class="fa-solid fa-scissors"></i></i></span>CapCut</li>
               </ul>
+              
         </section>
 
-        <section id="courses">
+        <section id="courses-hidden">
             <div class="courses">
               <h2 class="cc_h2">Courses Certificates</h2>
+                  
               <div class="course-cert">
+                 <h3>Introduction to Cybersecurity</h3>
+                 <p>Cisco Networking Academy</p>
+                 <p class="cert-date">Completed: March 2026</p>
+                 <a href="https://drive.google.com/file/d/1BJT2VEJ16rqidTtsv-nPBJXA5o8P_ZrZ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
+              </div>
+              
+              <div class="course-cert">
+                    <h3>2nd Year Internship</h3>
+                    <p>TATA MOTORS</p>
+                    <p class="cert-date">Completed: July 2026</p>
+                    <a href="https://drive.google.com/file/d/1T7KHaY__vCw7gqhrmDyDNO4qZYwUaRsA/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
+              </div>
+              
+              <div class="course-cert">
+                    <h3>1st Year Rank</h3>
+                    <p>Govt. Polytechnic Raghopur Supaul</p>
+                    <p class="cert-date">Awarded: 15, August 2026</p>
+                    <a href="https://drive.google.com/file/d/1PMWRA9GhsoEdLuBesFfVD3J_jywL0Ynm/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
+              </div>
+              
+              <!-- This space for adding more certificate -->
+              <div class="course-cert-extra" id="extra-courses">
+                <div>
+                  <div class="course-cert">
                  <h3>Web Technology</h3>
                   <p>State Board of Technical Education, Bihar (SBTE)</p>
                   <p class="cert-date">Completed: January 2026</p>
@@ -120,19 +166,12 @@
                   <a href="https://drive.google.com/file/d/1vbfNjIehzxhpXeldcPNMzduxjz30cPKG/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
               </div>
 
-              <div class="course-cert">
-                 <h3>Introduction to Cybersecurity</h3>
-                 <p>Cisco Networking Academy</p>
-                 <p class="cert-date">Completed: March 2026</p>
-                 <a href="https://drive.google.com/file/d/1BJT2VEJ16rqidTtsv-nPBJXA5o8P_ZrZ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
+                </div>
               </div>
 
-              <div class="course-cert">
-                <h3>2nd year internship</h3>
-                <p>TATA MOTORS</p>
-                <p class="cert-date">Completed: July 2026</p>
-                <a href="https://drive.google.com/file/d/1T7KHaY__vCw7gqhrmDyDNO4qZYwUaRsA/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
-              </div>
+              <button id="toggle-courses" class="view-btn courses-toggle-btn" aria-expanded="false" aria-controls="extra-courses">
+                  Show all certificates <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+              </button>
           </div>
       </section>
 
