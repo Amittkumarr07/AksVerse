@@ -6,10 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amit Kumar | Developer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" href="aksverse-loader.css">
     <script src="https://kit.fontawesome.com/2a9a534f60.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="main">
+  <!-- ===== AksVerse Loader (copy this whole block into your site) ===== -->
+<div id="aksverse-loader">
+  <svg class="aksverse-hex" viewBox="0 0 160 160">
+    <polygon class="hex-outer" points="80,10 141,45 141,115 80,150 19,115 19,45"></polygon>
+    <polygon class="hex-inner" points="80,34 117,53 117,107 80,126 43,107 43,53"></polygon>
+    <circle class="hex-core" cx="80" cy="80" r="10"></circle>
+    <circle class="hex-dot" cx="80" cy="10" r="4"></circle>
+    <circle class="hex-dot" cx="141" cy="45" r="4"></circle>
+    <circle class="hex-dot" cx="141" cy="115" r="4"></circle>
+    <circle class="hex-dot" cx="80" cy="150" r="4"></circle>
+    <circle class="hex-dot" cx="19" cy="115" r="4"></circle>
+    <circle class="hex-dot" cx="19" cy="45" r="4"></circle>
+  </svg>
+
+  <h1 class="aksverse-title">Welcome to AksVerse</h1>
+  <p class="aksverse-subtitle">Be ready for it</p>
+
+  <div class="aksverse-dots">
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <p class="aksverse-loading">Loading...</p>
+</div>
+<!-- ===== end loader ===== -->
 
   <nav class="nav-bar" aria-label="Main Navigation">
     <a href="#about" class="nav-btn" aria-label="Go to About section">
@@ -201,5 +226,6 @@
   </button>
 
   <script src="script.js"></script>
+  <script src="aksverse-loader.js"></script>
 </body>
 </html>
