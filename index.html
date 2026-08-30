@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amit Kumar | Developer Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css">
-     <link rel="stylesheet" href="css/aksverse-loader.css">
-    <script src="https://kit.fontawesome.com/2a9a534f60.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amit Kumar | Developer Portfolio</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/aksverse-loader.css">
+  <script src="https://kit.fontawesome.com/2a9a534f60.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="main">
-  <!-- ===== AksVerse Loader (copy this whole block into your site) ===== -->
-<div id="aksverse-loader">
-  <svg class="aksverse-hex" viewBox="0 0 160 160">
-    <polygon class="hex-outer" points="80,10 141,45 141,115 80,150 19,115 19,45"></polygon>
-    <polygon class="hex-inner" points="80,34 117,53 117,107 80,126 43,107 43,53"></polygon>
-    <circle class="hex-core" cx="80" cy="80" r="10"></circle>
-    <circle class="hex-dot" cx="80" cy="10" r="4"></circle>
-    <circle class="hex-dot" cx="141" cy="45" r="4"></circle>
-    <circle class="hex-dot" cx="141" cy="115" r="4"></circle>
-    <circle class="hex-dot" cx="80" cy="150" r="4"></circle>
-    <circle class="hex-dot" cx="19" cy="115" r="4"></circle>
-    <circle class="hex-dot" cx="19" cy="45" r="4"></circle>
-  </svg>
+  <!-- ===== AksVerse Loader ===== -->
+  <div id="aksverse-loader">
+    <svg class="aksverse-hex" viewBox="0 0 160 160">
+      <polygon class="hex-outer" points="80,10 141,45 141,115 80,150 19,115 19,45"></polygon>
+      <polygon class="hex-inner" points="80,34 117,53 117,107 80,126 43,107 43,53"></polygon>
+      <circle class="hex-core" cx="80" cy="80" r="10"></circle>
+      <circle class="hex-dot" cx="80" cy="10" r="4"></circle>
+      <circle class="hex-dot" cx="141" cy="45" r="4"></circle>
+      <circle class="hex-dot" cx="141" cy="115" r="4"></circle>
+      <circle class="hex-dot" cx="80" cy="150" r="4"></circle>
+      <circle class="hex-dot" cx="19" cy="115" r="4"></circle>
+      <circle class="hex-dot" cx="19" cy="45" r="4"></circle>
+    </svg>
 
-  <h1 class="aksverse-title">Welcome to AksVerse</h1>
-  <p class="aksverse-subtitle">Be ready for it</p>
+    <h1 class="aksverse-title">Welcome to AksVerse</h1>
+    <p class="aksverse-subtitle"></p>
 
-  <div class="aksverse-dots">
-    <span></span><span></span><span></span><span></span>
+    <div class="aksverse-dots">
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <p class="aksverse-loading">Loading Portfolio...</p>
   </div>
-
-  <p class="aksverse-loading">Loading...</p>
-</div>
-<!-- ===== end loader ===== -->
+  <!-- ===== end loader ===== -->
 
   <nav class="nav-bar" aria-label="Main Navigation">
     <a href="#about" class="nav-btn" aria-label="Go to About section">
@@ -44,7 +45,7 @@
       <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
     </a>
     <a href="#courses" class="nav-btn" aria-label="Go to Courses section">
-        <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+      <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
     </a>
     <a href="#contact" class="nav-btn" aria-label="Go to Contact section">
       <i class="fa-solid fa-circle-user" aria-hidden="true"></i>
@@ -52,180 +53,206 @@
   </nav>
 
   <main>
-      <section id="about">
-          <div class="hd-about">
-			  <span class="status-pill"><span class="dot" aria-hidden="true"></span>AksVerse</span>
-              <h1><span class="hi-spn">Hi,</span> My name is <span class="nm-spn">Amit Kumar.</span></h1>
-              <h3 class="type">I am a/an <span id="changing-txt"></span><span class="cursor"></span></h3>
+    <section id="about">
+      <div class="hd-about">
+        <span class="status-pill"><span class="dot" aria-hidden="true"></span>AksVerse</span>
+        <h1><span class="hi-spn">Hi,</span> My name is <span class="nm-spn">Amit Kumar.</span></h1>
+        <h3 class="type">I am a/an <span id="changing-txt"></span><span class="cursor"></span></h3>
+      </div>
+
+      <div class="about-content">
+        <div class="about-text">
+          <h2 class="about-main-h">About <span class="ab-spn">me</span></h2>
+          <p class="about-main-p">I am a Computer Science and Engineering student at <span>Govt. Polytechnic Raghopur,
+              Supaul</span>.</p>
+          <p class="about-main-p">I specialize in front-end web development and software logic. I built this portfolio
+            from scratch using vanilla JavaScript and CSS to demonstrate my grasp of responsive design and custom
+            themes. Currently, I am expanding my foundation in C and Python.</p>
+
+          <div class="tech-stack">
+            <span class="stack-pill">JavaScript</span>
+            <span class="stack-pill">HTML5 & CSS3</span>
+            <span class="stack-pill">C</span>
+            <span class="stack-pill">Python</span>
           </div>
 
-          <div class="about-content">
-              <div class="about-text">
-                  <h2 class="about-main-h">About <span class="ab-spn">me</span></h2>
-                  <p class="about-main-p">I am a Computer Science and Engineering student at <span>Govt. Polytechnic Raghopur, Supaul</span>.</p>
-                  <p class="about-main-p">I specialize in front-end web development and software logic. I built this portfolio from scratch using vanilla JavaScript and CSS to demonstrate my grasp of responsive design and custom themes. Currently, I am expanding my foundation in C and Python.</p>
-
-                  <div class="tech-stack">
-                      <span class="stack-pill">JavaScript</span>
-                      <span class="stack-pill">HTML5 & CSS3</span>
-                      <span class="stack-pill">C</span>
-                      <span class="stack-pill">Python</span>
-                  </div>
-
-                  <div class="about-actions" style="margin-top: 30px;">
-                      <a href="#projects-Skills" class="view-btn">See My Work</a>
-                  </div>
-              </div>
-
-              <div class="about-visual">
-                  <div class="terminal-card" aria-hidden="true">
-                      <div class="terminal-bar">
-                          <span class="t-dot"></span>
-                          <span class="t-dot"></span>
-                          <span class="t-dot"></span>
-                          <span class="terminal-title">portfolio@aks_verse</span>
-                      </div>
-                      <div class="terminal-body">
-                          <p><span class="t-prompt">$</span> whoami</p>
-                          <p class="t-out">amit kumar</p>
-                          <p><span class="t-prompt">$</span> role</p>
-                          <p class="t-out">cse student, web developer</p>
-                          <p><span class="t-prompt">$</span> stack</p>
-                          <p class="t-out">html . css . js . c . python</p>
-                          <p><span class="t-prompt">$</span> status</p>
-                          <p class="t-out">learning, building, shipping</p>
-                          <p><span class="t-prompt">$</span> <span class="t-cursor"></span></p>
-                      </div>
-                  </div>
-              </div>
+          <div class="about-actions" style="margin-top: 30px;">
+            <a href="#projects-Skills" class="view-btn">See My Work</a>
           </div>
-      </section>
+        </div>
+      </div>
+    </section>
 
-      <section id="projects-Skills">
-          <div class="projects">
-              <h2>Projects</h2>
-              <ul class="proj-ul">
-                  <li>
-                    <div>
-                      <strong>Simple Portfolio Website <span><i class="fa-solid fa-briefcase" aria-hidden="true"></i></span></strong><br>
-                      <span class="pj-spn">A fully responsive personal portfolio featuring a custom light/dark theme toggle and a dynamic typing effect, built without external UI frameworks.</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <strong>Basic Calculator using C <span><i class="fa-solid fa-calculator" aria-hidden="true"></i></span></strong><br>
-                      <span class="pj-spn">A command-line application that handles core arithmetic operations, demonstrating proficiency in C syntax and control structures.</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <strong>Buy<span class="buyit-span">it</span> <span><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></span></strong><br>
-                      <span class="pj-spn">An interactive e-commerce web application built from scratch using HTML, CSS, and JavaScript. This project was developed as a 2nd-year internship project to demonstrate core frontend development skills, state management, and third-party API integration.</span><br>
-                      <a href="https://github.com/Amittkumarr07/Buyit">Click here to view Project</a>
-                    </div>
-                  </li>
-              </ul>
+    <section id="projects-Skills">
+      <div class="projects">
+        <h2>Projects</h2>
+        <ul class="proj-ul">
+          <li>
+            <div>
+              <strong>Simple Portfolio Website <span><i class="fa-solid fa-briefcase"
+                    aria-hidden="true"></i></span></strong><br>
+              <span class="pj-spn">A fully responsive personal portfolio featuring a custom light/dark theme toggle and
+                a dynamic typing effect, built without external UI frameworks.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Basic Calculator using C <span><i class="fa-solid fa-calculator"
+                    aria-hidden="true"></i></span></strong><br>
+              <span class="pj-spn">A command-line application that handles core arithmetic operations, demonstrating
+                proficiency in C syntax and control structures.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Buy<span class="buyit-span">it</span> <span><i class="fa-solid fa-cart-shopping"
+                    aria-hidden="true"></i></span></strong><br>
+              <span class="pj-spn">An interactive e-commerce web application built from scratch using HTML, CSS, and
+                JavaScript. This project was developed as a 2nd-year internship project to demonstrate core frontend
+                development skills, state management, and third-party API integration.</span><br>
+              <a href="https://github.com/Amittkumarr07/Buyit" class="view-btn">View Project
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="skills-dv">
+        <h2 class="skills">Skills <i class="fa-solid fa-code" aria-hidden="true"></i></h2>
+        <h3 class="Web-dev">Web Development</h3>
+        <ul class="web-ul">
+          <li><span><i class="fa-brands fa-html5" aria-hidden="true"></i></span>HTML</li>
+          <li><span><i class="fa-brands fa-css3-alt" aria-hidden="true"></i></span>CSS</li>
+          <li><span><i class="fa-brands fa-square-js" aria-hidden="true"></i></span>JavaScript</li>
+        </ul>
+
+        <h3 class="pg-lang">Programming Languages</h3>
+        <ul>
+          <li><span><i class="fa-solid fa-c" aria-hidden="true"></i></span>C Language</li>
+          <li><span><i class="fa-brands fa-python" aria-hidden="true"></i></span>Python</li>
+        </ul>
+
+        <h3 class="pg-lang">Mobile Video Editing</h3>
+        <ul>
+          <li><span><i class="fa-solid fa-scissors"></i></i></span>CapCut</li>
+        </ul>
+
+    </section>
+
+    <section id="courses">
+      <div class="courses">
+        <h2 class="cc_h2">Courses Certificates</h2>
+
+        <div class="course-cert">
+          <h3>Introduction to Cybersecurity</h3>
+          <p>Cisco Networking Academy</p>
+          <p class="cert-date">Completed: March 2026</p>
+          <a href="https://drive.google.com/file/d/1BJT2VEJ16rqidTtsv-nPBJXA5o8P_ZrZ/view?usp=drivesdk" target="_blank"
+            rel="noopener noreferrer" class="view-btn">
+            View Certificate
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+
+        <div class="course-cert">
+          <h3>2nd Year Internship</h3>
+          <p>TATA MOTORS</p>
+          <p class="cert-date">Completed: July 2026</p>
+          <a href="https://drive.google.com/file/d/1T7KHaY__vCw7gqhrmDyDNO4qZYwUaRsA/view?usp=drivesdk" target="_blank"
+            rel="noopener noreferrer" class="view-btn">
+            View Certificate
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+
+        <div class="course-cert">
+          <h3>1st Year Rank</h3>
+          <p>Govt. Polytechnic Raghopur Supaul</p>
+          <p class="cert-date">Awarded: 15, August 2026</p>
+          <a href="https://drive.google.com/file/d/1PMWRA9GhsoEdLuBesFfVD3J_jywL0Ynm/view?usp=drivesdk" target="_blank"
+            rel="noopener noreferrer" class="view-btn">
+            View Certificate
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+
+        <!-- This space for adding more certificate -->
+        <div class="course-cert-extra" id="extra-courses">
+          <div>
+            <div class="course-cert">
+              <h3>Web Technology</h3>
+              <p>State Board of Technical Education, Bihar (SBTE)</p>
+              <p class="cert-date">Completed: January 2026</p>
+              <a href="https://drive.google.com/file/d/1xVsskvdO_MdWraIfDVA3SD_SXMENlk5v/view?usp=drivesdk"
+                target="_blank" rel="noopener noreferrer" class="view-btn">
+                View Certificate
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+
+            <div class="course-cert">
+              <h3>C Programming</h3>
+              <p>State Board of Technical Education, Bihar (SBTE)</p>
+              <p class="cert-date">Completed: March 2026</p>
+              <a href="https://drive.google.com/file/d/1vbfNjIehzxhpXeldcPNMzduxjz30cPKG/view?usp=drivesdk"
+                target="_blank" rel="noopener noreferrer" class="view-btn">
+                View Certificate
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+
           </div>
+        </div>
 
-          <div class="skills-dv">
-              <h2 class="skills">Skills <i class="fa-solid fa-code" aria-hidden="true"></i></h2>
-              <h3 class="Web-dev">Web Development</h3>
-              <ul class="web-ul">
-                  <li><span><i class="fa-brands fa-html5" aria-hidden="true"></i></span>HTML</li>
-                  <li><span><i class="fa-brands fa-css3-alt" aria-hidden="true"></i></span>CSS</li>
-                  <li><span><i class="fa-brands fa-square-js" aria-hidden="true"></i></span>JavaScript</li>
-              </ul>
+        <button id="toggle-courses" class="view-btn courses-toggle-btn" aria-expanded="false"
+          aria-controls="extra-courses">
+          Show all certificates <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+      </div>
+    </section>
 
-              <h3 class="pg-lang">Programming Languages</h3>
-              <ul>
-                  <li><span><i class="fa-solid fa-c" aria-hidden="true"></i></span>C Language</li>
-                  <li><span><i class="fa-brands fa-python" aria-hidden="true"></i></span>Python</li>
-              </ul>
-              
-              <h3 class="pg-lang">Mobile Video Editing</h3>
-              <ul>
-                  <li><span><i class="fa-solid fa-scissors"></i></i></span>CapCut</li>
-              </ul>
-              
-        </section>
+    <section id="connect">
+      <div class="connect-me">
+        <h3 class="hello">Say Hello me!</h3>
+        <a href="https://forms.gle/NsfsUWU5ZkCr9MzB7" class="view-btn">
+          Open contact form
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </section>
 
-        <section id="courses">
-            <div class="courses">
-              <h2 class="cc_h2">Courses Certificates</h2>
-                  
-              <div class="course-cert">
-                 <h3>Introduction to Cybersecurity</h3>
-                 <p>Cisco Networking Academy</p>
-                 <p class="cert-date">Completed: March 2026</p>
-                 <a href="https://drive.google.com/file/d/1BJT2VEJ16rqidTtsv-nPBJXA5o8P_ZrZ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
-              </div>
-              
-              <div class="course-cert">
-                    <h3>2nd Year Internship</h3>
-                    <p>TATA MOTORS</p>
-                    <p class="cert-date">Completed: July 2026</p>
-                    <a href="https://drive.google.com/file/d/1T7KHaY__vCw7gqhrmDyDNO4qZYwUaRsA/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
-              </div>
-              
-              <div class="course-cert">
-                    <h3>1st Year Rank</h3>
-                    <p>Govt. Polytechnic Raghopur Supaul</p>
-                    <p class="cert-date">Awarded: 15, August 2026</p>
-                    <a href="https://drive.google.com/file/d/1PMWRA9GhsoEdLuBesFfVD3J_jywL0Ynm/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
-              </div>
-              
-              <!-- This space for adding more certificate -->
-              <div class="course-cert-extra" id="extra-courses">
-                <div>
-                  <div class="course-cert">
-                 <h3>Web Technology</h3>
-                  <p>State Board of Technical Education, Bihar (SBTE)</p>
-                  <p class="cert-date">Completed: January 2026</p>
-                  <a href="https://drive.google.com/file/d/1xVsskvdO_MdWraIfDVA3SD_SXMENlk5v/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
-              </div>
-
-              <div class="course-cert">
-                  <h3>C Programming</h3>
-                  <p>State Board of Technical Education, Bihar (SBTE)</p>
-                  <p class="cert-date">Completed: March 2026</p>
-                  <a href="https://drive.google.com/file/d/1vbfNjIehzxhpXeldcPNMzduxjz30cPKG/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn">View Certificate</a>
-              </div>
-
-                </div>
-              </div>
-
-              <button id="toggle-courses" class="view-btn courses-toggle-btn" aria-expanded="false" aria-controls="extra-courses">
-                  Show all certificates <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-              </button>
-          </div>
-      </section>
-
-      <section id="contact">
-          <div class="contact-card">
-              <h2>Contact <span class="cc-spn">me</span></h2>
-                 <div class="contact-icon reveal">
-                      <a href="https://www.linkedin.com/in/amittkumar7" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn">
-                         <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-                      </a>
-                      <a href="https://github.com/Amittkumarr07" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub">
-                         <i class="fa-brands fa-github" aria-hidden="true"></i>
-                      </a>
-                      <a href="mailto:amitkumarhero980140@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Send me an email">
-                        <i class="fa-solid fa-envelope-open" aria-hidden="true"></i>
-                      </a>
-                      <a href="https://www.instagram.com/amitt_kumar_7?igsh=MWl6czRhaGxpZGwzMg==" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram">
-                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                      </a>
-                 </div>
-          </div>
-      </section>
+    <section id="contact">
+      <div class="contact-card">
+        <h2>Contact <span class="cc-spn">me</span></h2>
+        <div class="contact-icon reveal">
+          <a href="https://www.linkedin.com/in/amittkumar7" target="_blank" rel="noopener noreferrer"
+            aria-label="Visit my LinkedIn">
+            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+          </a>
+          <a href="https://github.com/Amittkumarr07" target="_blank" rel="noopener noreferrer"
+            aria-label="Visit my GitHub">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="mailto:amitkumarhero980140@gmail.com" target="_blank" rel="noopener noreferrer"
+            aria-label="Send me an email">
+            <i class="fa-solid fa-envelope-open" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.instagram.com/amitt_kumar_7?igsh=MWl6czRhaGxpZGwzMg==" target="_blank"
+            rel="noopener noreferrer" aria-label="Visit my Instagram">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <button id="theme-toggle" aria-label="Toggle light and dark theme">
-      <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+    <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
   </button>
 
   <script src="js/script.js"></script>
   <script src="js/aksverse-loader.js"></script>
 </body>
+
 </html>

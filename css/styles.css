@@ -67,10 +67,12 @@ body {
 }
 
 @keyframes blink {
+
     0%,
     100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0;
     }
@@ -129,6 +131,7 @@ section {
     color: var(--text-on-surface);
     font-family: var(--mono-font);
 }
+
 .hd-about span {
     color: var(--primary-color);
 }
@@ -160,88 +163,12 @@ section {
     max-width: 600px;
 }
 
-.about-visual {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.terminal-card {
-    width: 100%;
-    max-width: 450px;
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    font-family: var(--mono-font);
-}
-
-.terminal-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 16px;
-    background-color: var(--bg-color);
-    border-bottom: 1px solid var(--border-color);
-}
-
-.t-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: var(--border-color);
-}
-
-.t-dot:nth-child(1) {
-    background-color: #ff5f56;
-}
-.t-dot:nth-child(2) {
-    background-color: #ffbd2e;
-}
-.t-dot:nth-child(3) {
-    background-color: #27c93f;
-}
-
-.terminal-title {
-    margin-left: auto;
-    font-size: 0.8rem;
-    color: var(--text-on-surface);
-}
-
-.terminal-body {
-    padding: 20px 22px;
-    font-size: 0.95rem;
-    line-height: 1.7;
-}
-
-.t-prompt {
-    color: var(--primary-color);
-    font-weight: 700;
-    margin-right: 8px;
-}
-
-.t-out {
-    color: var(--text-on-bg);
-    padding-left: 20px;
-    margin-bottom: 12px;
-    word-break: break-word;
-}
-
-.t-cursor {
-    display: inline-block;
-    width: 8px;
-    height: 1em;
-    background-color: var(--primary-color);
-    vertical-align: middle;
-    animation: blink 0.8s infinite;
-}
 
 /* About Section Tech Stack Pills */
 .tech-stack {
     display: flex;
     align-content: center;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 20px;
@@ -254,7 +181,7 @@ section {
     text-align: center;
     border: 1px solid var(--border-color);
     padding: 6px 14px;
-    border-radius: 20px;
+    border-radius: 10px;
     font-size: 0.9rem;
     font-weight: 600;
     font-family: var(--mono-font);
@@ -304,16 +231,19 @@ section {
 .proj-ul li {
     margin-top: 20px;
     font-size: 1.4rem;
+
     a {
         font-size: 0.9rem;
         text-decoration: none;
     }
 }
+
 .buyit-span {
     color: var(--primary-color);
 }
+
 .web-ul li,
-.pg-lang + ul li {
+.pg-lang+ul li {
     font-size: 1.1rem;
     margin-bottom: 15px;
     display: flex;
@@ -331,6 +261,7 @@ section {
     font-size: 1.5rem;
     color: var(--icon-color);
 }
+
 /* Certificates Layout */
 .courses {
     flex: 1;
@@ -341,12 +272,14 @@ section {
     border: 1px solid var(--border-color);
     box-shadow: 0 4px 6px #0f0f0f0d;
 }
+
 .cc_h2 {
     /* margin-top: 40px; */
     font-size: 2rem;
     color: var(--text-on-bg);
     font-family: var(--mono-font);
 }
+
 .course-cert {
     background-color: var(--bg-color);
     border: 1px solid var(--border-color);
@@ -380,7 +313,7 @@ section {
     opacity: 1;
 }
 
-.course-cert-extra > div {
+.course-cert-extra>div {
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -416,12 +349,13 @@ section {
 
 /* Buttons */
 .view-btn {
-    background-color: var(--primary-color);
-    color: var(--text-on-primary);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--tertiary-color);
+    color: var(--text-on-bg);
     padding: 10px 24px;
-    border-radius: 30px;
+    border-radius: 5px;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     transition: all 0.3s ease;
     display: inline-block;
     text-align: center;
@@ -484,6 +418,7 @@ section {
 .contact-icon a:hover i {
     color: var(--text-on-primary);
 }
+
 .reveal {
     opacity: 0;
     transform: translateY(50px);
@@ -597,64 +532,4 @@ section {
         gap: 40px;
     }
 
-    .terminal-card {
-        max-width: 100%;
-        border-radius: 12px;
-    }
-
-    .terminal-bar {
-        padding: 10px 14px;
-    }
-
-    .terminal-title {
-        font-size: 0.75rem;
-    }
-
-    .terminal-body {
-        padding: 16px 18px;
-        font-size: 0.85rem;
-        line-height: 1.6;
-    }
-
-    .t-out {
-        padding-left: 16px;
-        margin-bottom: 10px;
-    }
-}
-
-/* ---- Small phones: swap terminal chrome for a lighter stat-list card ---- */
-@media (max-width: 480px) {
-    .terminal-card {
-        border-radius: 14px;
-    }
-
-    .terminal-bar {
-        padding: 12px 16px;
-    }
-
-    .terminal-body {
-        padding: 18px 16px 20px;
-        font-size: 0.9rem;
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-    }
-
-    /* group each $ command with its output as one row instead of two stacked lines */
-    .terminal-body p:has(+ .t-out) {
-        margin-bottom: 2px;
-    }
-
-    .t-out {
-        padding-left: 0;
-        margin-bottom: 14px;
-        padding: 6px 10px;
-        background-color: var(--bg-color);
-        border-radius: 6px;
-        border-left: 2px solid var(--primary-color);
-    }
-
-    .t-prompt {
-        font-size: 0.85rem;
-    }
 }
