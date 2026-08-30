@@ -118,7 +118,7 @@
   color: #5b6472;
 }
 
-/* Respect users who've asked for reduced motion */
+/* Loader Time according to the users */
 @media (prefers-reduced-motion: reduce) {
   .aksverse-hex,
   .hex-core,
