@@ -1,14 +1,16 @@
 /* ============================================
-   AksVerse Loading Screen 
+   AksVerse Loading Screen — controller
+   Hides the loader once the page is ready and
+   drives the particle-network background.
    ============================================ */
 
 (function () {
   var loader = document.getElementById("aksverse-loader");
   if (!loader) return;
 
-  var MIN_DISPLAY_MS = 1400;   // minimum display loading screen
+  var MIN_DISPLAY_MS = 900;    // keep it visible at least this long, so it doesn't just flash
   var MAX_DISPLAY_MS = 6000;   // safety net: hide anyway if "load" never fires
-  var FONT_FALLBACK_MS = 1200; // reveal text anyway if font loading takes too long or isn't supported
+  var FONT_FALLBACK_MS = 250;  // reveal text quickly even if the webfont hasn't finished loading yet
   var startTime = Date.now();
 
   // Loader text starts hidden (see CSS) and only becomes visible once

@@ -6,8 +6,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amit Kumar | AksVerse Portfolio</title>
+  <meta name="description"
+    content="Amit Kumar — Computer Science and Engineering student at Govt. Polytechnic Raghopur, Supaul. Portfolio featuring web development projects, skills, and certifications.">
 
-  <!-- loads the font fast  -->
+  <!-- Open Graph / social preview tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Amit Kumar | AksVerse Portfolio">
+  <meta property="og:description"
+    content="Computer Science and Engineering student specializing in front-end web development. Explore my projects, skills, and certifications.">
+  <meta property="og:image" content="https://theamitkumar.in/images/og-preview.png">
+  <meta property="og:url" content="https://theamitkumar.in">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Amit Kumar | AksVerse Portfolio">
+  <meta name="twitter:description"
+    content="Computer Science and Engineering student specializing in front-end web development. Explore my projects, skills, and certifications.">
+  <meta name="twitter:image" content="https://theamitkumar.in/images/og-preview.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
@@ -17,7 +33,7 @@
   <link rel="stylesheet" href="css/aksverse-loader.css">
   <script src="https://kit.fontawesome.com/2a9a534f60.js" crossorigin="anonymous"></script>
   <script>
-    // Themes changer of loading screen for the user
+    // This code is here because of theme will never get confused while on loading screen
     if (localStorage.getItem("theme") === "light") {
       document.documentElement.setAttribute("data-theme", "light");
     }
@@ -58,7 +74,7 @@
     <a href="#about" class="nav-btn" aria-label="Go to About section">
       <i class="fa-solid fa-house" aria-hidden="true"></i>
     </a>
-    <a href="#projects-Skills" class="nav-btn" aria-label="Go to Projects and Skills section">
+    <a href="#projects-main" class="nav-btn" aria-label="Go to Projects section">
       <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
     </a>
     <a href="#courses" class="nav-btn" aria-label="Go to Courses section">
@@ -74,7 +90,7 @@
       <div class="hd-about">
         <span class="status-pill"><span class="dot" aria-hidden="true"></span>AksVerse</span>
         <h1><span class="hi-spn">Hi,</span> My name is <span class="nm-spn">Amit Kumar.</span></h1>
-        <h3 class="type">I am a/an <span id="changing-txt"></span><span class="cursor"></span></h3>
+        <h3>I am a/an <span id="changing-txt"></span><span class="cursor"></span></h3>
       </div>
 
       <div class="about-content">
@@ -94,66 +110,153 @@
           </div>
 
           <div class="about-actions">
-            <a href="#projects-Skills" class="view-btn">See My Work</a>
+            <a href="#skills" class="view-btn">See My Work</a>
+            <!-- <a href="https://drive.google.com/your-resume-link-here" target="_blank" rel="noopener noreferrer"
+              class="view-btn view-btn-accent">
+              Download CV <i class="fa-solid fa-download" aria-hidden="true"></i>
+            </a> -->
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <div class="profile-ring">
+            <span class="profile-initials">AK</span>
+          </div>
+          <h3 class="profile-name">Amit Kumar</h3>
+          <p class="profile-role">Computer Science Engineer</p>
+          <nav class="profile-links" aria-label="Quick links">
+            <a href="#skills">Projects <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <a href="#contact">Contact <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </nav>
+        </aside>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="skills-dv">
+        <h2 class="skills-main">Skills <i class="fa-solid fa-code" aria-hidden="true"></i></h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <span class="skill-num">01</span>
+            <div class="skill-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
+            <h3>Web Development</h3>
+            <p>HTML &middot; CSS &middot; JavaScript</p>
+          </div>
+          <div class="skill-card">
+            <span class="skill-num">02</span>
+            <div class="skill-icon"><i class="fa-regular fa-file-code" aria-hidden="true"></i></div>
+            <h3>Programming</h3>
+            <p>C &middot; Python</p>
+          </div>
+          <div class="skill-card">
+            <span class="skill-num">03</span>
+            <div class="skill-icon"><i class="fa-solid fa-scissors" aria-hidden="true"></i></div>
+            <h3>Mobile Video Editing</h3>
+            <p>CapCut</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="projects-Skills">
+    <section id="projects-main">
       <div class="projects">
         <h2>Projects</h2>
         <ul class="proj-ul">
           <li>
-            <div>
-              <strong>Simple Portfolio Website <span><i class="fa-solid fa-briefcase"
-                    aria-hidden="true"></i></span></strong><br>
-              <span class="pj-spn">A fully responsive personal portfolio featuring a custom light/dark theme toggle and
-                a dynamic typing effect, built without external UI frameworks.</span>
+            <div class="proj-card">
+              <img class="proj-img" src="images/projects/portfolio.png"
+                alt="Screenshot of the AksVerse portfolio website">
+              <div class="proj-body">
+                <strong>AksVerse Portfolio Website <span><i class="fa-solid fa-briefcase"
+                      aria-hidden="true"></i></span></strong><br>
+                <span class="pj-spn">A fully responsive personal portfolio featuring a custom light/dark theme toggle
+                  and a dynamic typing effect, built without external UI frameworks.</span>
+                <div class="proj-links">
+                  <a href="https://github.com/Amittkumarr07/AksVerse" class="view-btn">View Code
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+
+                  <a href="https://theamitkumar.in" class="view-btn view-btn-accent">Same website</a>
+                </div>
+              </div>
             </div>
           </li>
           <li>
-            <div>
-              <strong>Basic Calculator using C <span><i class="fa-solid fa-calculator"
-                    aria-hidden="true"></i></span></strong><br>
-              <span class="pj-spn">A command-line application that handles core arithmetic operations, demonstrating
-                proficiency in C syntax and control structures.</span>
+            <div class="proj-card">
+              <img class="proj-img" src="images/projects/calculator.png"
+                alt="Screenshot of the C command-line calculator">
+              <div class="proj-body">
+                <strong>Basic Calculator using C <span><i class="fa-solid fa-calculator"
+                      aria-hidden="true"></i></span></strong><br>
+                <span class="pj-spn">A command-line application that handles core arithmetic operations,
+                  demonstrating proficiency in C syntax and control structures.</span>
+                <div class="proj-links">
+                  <a href="https://github.com/Amittkumarr07/Simple-calculator.git" class="view-btn">View Code
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
             </div>
           </li>
           <li>
-            <div>
-              <strong>Buy<span class="buyit-span">it</span> <span><i class="fa-solid fa-cart-shopping"
-                    aria-hidden="true"></i></span></strong><br>
-              <span class="pj-spn">An interactive e-commerce web application built from scratch using HTML, CSS, and
-                JavaScript. This project was developed as a 2nd-year internship project to demonstrate core frontend
-                development skills, state management, and third-party API integration.</span><br>
-              <a href="https://github.com/Amittkumarr07/Buyit" class="view-btn">View Project
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
+            <div class="proj-card">
+              <img class="proj-img" src="images/projects/buyit.png"
+                alt="Screenshot of the Buyit e-commerce web application">
+              <div class="proj-body">
+                <strong>Buy<span class="buyit-span">it</span> <span><i class="fa-solid fa-cart-shopping"
+                      aria-hidden="true"></i></span></strong><br>
+                <span class="pj-spn">An interactive e-commerce web application built from scratch using HTML, CSS,
+                  and JavaScript. This project was developed as a 2nd-year internship project to demonstrate core
+                  frontend development skills, state management, and third-party API integration.</span><br>
+                <div class="proj-links">
+                  <a href="https://github.com/Amittkumarr07/Buyit" class="view-btn">View Code
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+
+                  <a href="https://amittkumarr07.github.io/Buyit/" class="view-btn view-btn-accent">Live Demo
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
             </div>
           </li>
         </ul>
       </div>
+    </section>
 
-      <div class="skills-dv">
-        <h2 class="skills">Skills <i class="fa-solid fa-code" aria-hidden="true"></i></h2>
-        <h3 class="Web-dev">Web Development</h3>
-        <ul class="web-ul">
-          <li><span><i class="fa-brands fa-html5" aria-hidden="true"></i></span>HTML</li>
-          <li><span><i class="fa-brands fa-css3-alt" aria-hidden="true"></i></span>CSS</li>
-          <li><span><i class="fa-brands fa-square-js" aria-hidden="true"></i></span>JavaScript</li>
-        </ul>
+    <section id="experience">
+      <div class="timeline-wrap">
+        <h2 class="timeline-h2">Experience & Education</h2>
+        <ol class="timeline">
 
-        <h3 class="pg-lang">Programming Languages</h3>
-        <ul>
-          <li><span><i class="fa-solid fa-c" aria-hidden="true"></i></span>C Language</li>
-          <li><span><i class="fa-brands fa-python" aria-hidden="true"></i></span>Python</li>
-        </ul>
+          <li class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">2023 — 2025</span>
+              <h3>Matriculation (Class IX & X)</h3>
+              <p>Dini International School, Gaya (affiliated with CBSE Delhi)</p>
+            </div>
+          </li>
 
-        <h3 class="pg-lang">Mobile Video Editing</h3>
-        <ul>
-          <li><span><i class="fa-solid fa-scissors" aria-hidden="true"></i></span>CapCut</li>
-        </ul>
+          <li class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">2025 — Present</span>
+              <h3>Diploma in Computer Science &amp; Engineering</h3>
+              <p>Govt. Polytechnic Raghopur, Supaul (affiliated with SBTE Bihar)</p>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">July 2026</span>
+              <h3>2nd Year Internship</h3>
+              <p>Tata Motors — hands-on internship applying core engineering and technical skills.</p>
+            </div>
+          </li>
+
+        </ol>
       </div>
     </section>
 
@@ -229,20 +332,22 @@
       </div>
     </section>
 
-    <section id="connect">
-      <div class="connect-me">
-        <h3 class="hello">
-          let's connect
-        </h3>
+    <section id="contact">
+      <div class="connect">
+        <div class="idea">
+          <h3>
+            Have an idea?
+          </h3>
+          <p>
+            Let's buid together!
+          </p>
+        </div>
         <a href="https://forms.gle/NsfsUWU5ZkCr9MzB7" class="view-btn">
           Open contact form
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
       </div>
-    </section>
-
-    <section id="contact">
-      <div class="contact-card">
+      <div>
         <h2>Follow <span class="cc-spn">me</span></h2>
         <div class="contact-icon reveal">
           <a href="https://www.linkedin.com/in/amittkumar7" target="_blank" rel="noopener noreferrer"
@@ -269,6 +374,15 @@
   <button id="theme-toggle" aria-label="Toggle light and dark theme">
     <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
   </button>
+
+  <button id="scroll-top" class="scroll-top-btn" aria-label="Scroll back to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 AksVerse.</p>
+    <p>Built by Amit Kumar Singh</p>
+  </footer>
 
   <script src="js/script.js"></script>
   <script src="js/particle-network.js"></script>

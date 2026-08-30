@@ -95,4 +95,18 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     revealElements.forEach((element) => revealObserver.observe(element));
+
+    // --- Scroll-to-Top Button ---
+    const scrollTopBtn = document.getElementById("scroll-top");
+    const SHOW_AFTER_PX = 400;
+
+    if (scrollTopBtn) {
+        window.addEventListener("scroll", () => {
+            scrollTopBtn.classList.toggle("visible", window.scrollY > SHOW_AFTER_PX);
+        });
+
+        scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
 });
