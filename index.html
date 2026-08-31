@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/aksverse-loader.css">
@@ -74,33 +74,52 @@
     <a href="#about" class="nav-btn" aria-label="Go to About section">
       <i class="fa-solid fa-house" aria-hidden="true"></i>
     </a>
-    <a href="#projects-main" class="nav-btn" aria-label="Go to Projects section">
-      <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+
+    <a href="#skills" class="nav-btn" aria-label="Go to Skills Section">
+      <i class="fa-solid fa-code" aria-hidden="true"></i>
     </a>
+
+    <a href="#projects-main" class="nav-btn" aria-label="Go to Projects section">
+      <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+    </a>
+
     <a href="#courses" class="nav-btn" aria-label="Go to Courses section">
       <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
     </a>
+
     <a href="#contact" class="nav-btn" aria-label="Go to Contact section">
       <i class="fa-solid fa-circle-user" aria-hidden="true"></i>
     </a>
+
   </nav>
 
   <main>
     <section id="about">
       <div class="hd-about">
-        <span class="status-pill"><span class="dot" aria-hidden="true"></span>AksVerse</span>
-        <h1><span class="hi-spn">Hi,</span> My name is <span class="nm-spn">Amit Kumar.</span></h1>
-        <h3>I am a/an <span id="changing-txt"></span><span class="cursor"></span></h3>
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="term-dot term-dot-r" aria-hidden="true"></span>
+            <span class="term-dot term-dot-y" aria-hidden="true"></span>
+            <span class="term-dot term-dot-g" aria-hidden="true"></span>
+            <span class="terminal-path">amit@aksverse:~</span>
+          </div>
+          <div class="terminal-body">
+            <p class="term-line"><span class="term-prompt">$</span> whoami</p>
+            <h1><span class="nm-spn">Amit Kumar</span></h1>
+            <p class="term-line"><span class="term-prompt">$</span> role --current</p>
+            <h3>I am a/an <span id="changing-txt"></span><span class="cursor"></span></h3>
+          </div>
+        </div>
       </div>
 
       <div class="about-content">
         <div class="about-text">
-          <h2 class="about-main-h">About <span class="ab-spn">me</span></h2>
-          <p class="about-main-p">I am a Computer Science and Engineering student at <span>Govt. Polytechnic Raghopur,
-              Supaul</span>.</p>
-          <p class="about-main-p">I specialize in front-end web development and software logic. I built this portfolio
-            from scratch using vanilla JavaScript and CSS to demonstrate my grasp of responsive design and custom
-            themes. Currently, I am expanding my foundation in C and Python.</p>
+          <h2 class="about-main-h">About me</h2>
+          <p class="about-main-p">I am a Computer Science and Engineering student at Govt. Polytechnic
+            Raghopur, Supaul.</p>
+          <p class="about-main-p">I specialize in front-end web development and software logic. I built this
+            portfolio from scratch using vanilla JavaScript and CSS to demonstrate my grasp of responsive
+            design and custom themes. Currently, I am expanding my foundation in C and Python.</p>
 
           <div class="tech-stack">
             <span class="stack-pill">JavaScript</span>
@@ -134,27 +153,30 @@
 
     <section id="skills">
       <div class="skills-dv">
-        <h2 class="skills-main">Skills <i class="fa-solid fa-code" aria-hidden="true"></i></h2>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <span class="skill-num">01</span>
-            <div class="skill-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
-            <h3>Web Development</h3>
-            <p>HTML &middot; CSS &middot; JavaScript</p>
-          </div>
-          <div class="skill-card">
-            <span class="skill-num">02</span>
-            <div class="skill-icon"><i class="fa-regular fa-file-code" aria-hidden="true"></i></div>
-            <h3>Programming</h3>
-            <p>C &middot; Python</p>
-          </div>
-          <div class="skill-card">
-            <span class="skill-num">03</span>
-            <div class="skill-icon"><i class="fa-solid fa-scissors" aria-hidden="true"></i></div>
-            <h3>Mobile Video Editing</h3>
-            <p>CapCut</p>
-          </div>
-        </div>
+        <h2 class="skills-main">Skills</h2>
+        <ul class="skills-list">
+          <li class="skill-row">
+            <i class="fa-solid fa-code" aria-hidden="true"></i>
+            <div class="skill-row-text">
+              <h3>Web Development</h3>
+              <p>HTML &middot; CSS &middot; JavaScript</p>
+            </div>
+          </li>
+          <li class="skill-row">
+            <i class="fa-regular fa-file-code" aria-hidden="true"></i>
+            <div class="skill-row-text">
+              <h3>Programming</h3>
+              <p>C &middot; Python</p>
+            </div>
+          </li>
+          <li class="skill-row">
+            <i class="fa-solid fa-scissors" aria-hidden="true"></i>
+            <div class="skill-row-text">
+              <h3>Mobile Video Editing</h3>
+              <p>CapCut</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -167,8 +189,7 @@
               <img class="proj-img" src="images/projects/portfolio.png"
                 alt="Screenshot of the AksVerse portfolio website">
               <div class="proj-body">
-                <strong>AksVerse Portfolio Website <span><i class="fa-solid fa-briefcase"
-                      aria-hidden="true"></i></span></strong><br>
+                <strong>AksVerse Portfolio Website <i class="fa-solid fa-briefcase" aria-hidden="true"></i></strong>
                 <span class="pj-spn">A fully responsive personal portfolio featuring a custom light/dark theme toggle
                   and a dynamic typing effect, built without external UI frameworks.</span>
                 <div class="proj-links">
@@ -176,7 +197,7 @@
                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </a>
 
-                  <a href="https://theamitkumar.in" class="view-btn view-btn-accent">Same website</a>
+                  <a href="https://theamitkumar.in" class="view-btn view-btn-accent">Live Site</a>
                 </div>
               </div>
             </div>
@@ -186,8 +207,7 @@
               <img class="proj-img" src="images/projects/calculator.png"
                 alt="Screenshot of the C command-line calculator">
               <div class="proj-body">
-                <strong>Basic Calculator using C <span><i class="fa-solid fa-calculator"
-                      aria-hidden="true"></i></span></strong><br>
+                <strong>Basic Calculator using C <i class="fa-solid fa-calculator" aria-hidden="true"></i></strong>
                 <span class="pj-spn">A command-line application that handles core arithmetic operations,
                   demonstrating proficiency in C syntax and control structures.</span>
                 <div class="proj-links">
@@ -203,11 +223,10 @@
               <img class="proj-img" src="images/projects/buyit.png"
                 alt="Screenshot of the Buyit e-commerce web application">
               <div class="proj-body">
-                <strong>Buy<span class="buyit-span">it</span> <span><i class="fa-solid fa-cart-shopping"
-                      aria-hidden="true"></i></span></strong><br>
+                <strong>Buy<span class="buyit-span">it</span> <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></strong>
                 <span class="pj-spn">An interactive e-commerce web application built from scratch using HTML, CSS,
                   and JavaScript. This project was developed as a 2nd-year internship project to demonstrate core
-                  frontend development skills, state management, and third-party API integration.</span><br>
+                  frontend development skills, state management, and third-party API integration.</span>
                 <div class="proj-links">
                   <a href="https://github.com/Amittkumarr07/Buyit" class="view-btn">View Code
                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -250,7 +269,7 @@
           <li class="timeline-item">
             <div class="timeline-dot" aria-hidden="true"></div>
             <div class="timeline-content">
-              <span class="timeline-date">July 2026</span>
+              <span class="timeline-date">June - July 2026</span>
               <h3>2nd Year Internship</h3>
               <p>Tata Motors — hands-on internship applying core engineering and technical skills.</p>
             </div>
@@ -262,7 +281,7 @@
 
     <section id="courses">
       <div class="courses">
-        <h2 class="cc_h2">Courses Certificates</h2>
+        <h2 class="cc_h2">Courses & Certificates</h2>
 
         <div class="course-cert">
           <h3>Introduction to Cybersecurity</h3>
@@ -333,13 +352,14 @@
     </section>
 
     <section id="contact">
+      <h2>Let's connect</h2>
       <div class="connect">
         <div class="idea">
           <h3>
             Have an idea?
           </h3>
           <p>
-            Let's buid together!
+            Let's build together!
           </p>
         </div>
         <a href="https://forms.gle/NsfsUWU5ZkCr9MzB7" class="view-btn">
@@ -347,26 +367,23 @@
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
       </div>
-      <div>
-        <h2>Follow <span class="cc-spn">me</span></h2>
-        <div class="contact-icon reveal">
-          <a href="https://www.linkedin.com/in/amittkumar7" target="_blank" rel="noopener noreferrer"
-            aria-label="Visit my LinkedIn">
-            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-          </a>
-          <a href="https://github.com/Amittkumarr07" target="_blank" rel="noopener noreferrer"
-            aria-label="Visit my GitHub">
-            <i class="fa-brands fa-github" aria-hidden="true"></i>
-          </a>
-          <a href="mailto:amitkumarhero980140@gmail.com" target="_blank" rel="noopener noreferrer"
-            aria-label="Send me an email">
-            <i class="fa-solid fa-envelope-open" aria-hidden="true"></i>
-          </a>
-          <a href="https://www.instagram.com/amitt_kumar_7?igsh=MWl6czRhaGxpZGwzMg==" target="_blank"
-            rel="noopener noreferrer" aria-label="Visit my Instagram">
-            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-          </a>
-        </div>
+      <div class="contact-icon reveal">
+        <a href="https://www.linkedin.com/in/amittkumar7" target="_blank" rel="noopener noreferrer"
+          aria-label="Visit my LinkedIn">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="https://github.com/Amittkumarr07" target="_blank" rel="noopener noreferrer"
+          aria-label="Visit my GitHub">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+        </a>
+        <a href="mailto:amitkumarhero980140@gmail.com" target="_blank" rel="noopener noreferrer"
+          aria-label="Send me an email">
+          <i class="fa-solid fa-envelope-open" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/amitt_kumar_7?igsh=MWl6czRhaGxpZGwzMg==" target="_blank"
+          rel="noopener noreferrer" aria-label="Visit my Instagram">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+        </a>
       </div>
     </section>
   </main>
@@ -381,7 +398,7 @@
 
   <footer class="site-footer">
     <p>&copy; 2026 AksVerse.</p>
-    <p>Built by Amit Kumar Singh</p>
+    <p>Built by Amit Kumar</p>
   </footer>
 
   <script src="js/script.js"></script>
