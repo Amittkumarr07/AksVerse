@@ -48,18 +48,20 @@
       })
     : null;
 
+  var hiding = false;
+
   function hideLoader() {
-    var elapsed = Date.now() - startTime;
-    var remaining = Math.max(0, MIN_DISPLAY_MS - elapsed);
+    if (hiding) return; // "load" and the safety timer can both fire
+    hiding = true;
+
+    var remaining = Math.max(0, MIN_DISPLAY_MS - (Date.now() - startTime));
 
     setTimeout(function () {
       loader.classList.add("aksverse-hidden");
       // fully remove from the DOM after the fade transition finishes
       setTimeout(function () {
         if (stopParticles) stopParticles();
-        if (loader && loader.parentNode) {
-          loader.parentNode.removeChild(loader);
-        }
+        if (loader.parentNode) loader.parentNode.removeChild(loader);
       }, 650);
     }, remaining);
   }

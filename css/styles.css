@@ -24,6 +24,12 @@ html {
     /* muted mint — secondary accent only */
     --icon-color: #9aa5ad;
 
+    /* Transparent "glass" surfaces so the particle background shows through */
+    --glass-bg: rgba(18, 22, 27, 0.45);
+    --glass-inner: rgba(11, 14, 17, 0.35);
+    --glass-border: rgba(255, 255, 255, 0.09);
+    --glass-blur: blur(12px);
+
     --text-on-bg: #e8ecef;
     --text-on-surface: #8b96a1;
     --text-on-primary: #1c1204;
@@ -44,10 +50,20 @@ html {
     --tertiary-color: #0d7a63;
     --icon-color: #4a4238;
 
+    --glass-bg: rgba(255, 255, 255, 0.5);
+    --glass-inner: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(80, 65, 40, 0.16);
+
     --text-on-bg: #1a1712;
     --text-on-surface: #5c5548;
     --text-on-primary: #ffffff;
     --text-on-tertiary: #ffffff;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 body {
@@ -106,67 +122,80 @@ h1, h2, h3 {
     font-weight: 600;
 }
 
-/* ===== Hero: terminal window ===== */
+/* ===== Hero ===== */
 .hd-about {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 48px;
+    min-height: 78vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
 }
 
-.terminal {
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px -25px rgba(0, 0, 0, 0.6);
-}
-
-.terminal-bar {
+.hero-inner {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 16px;
-    background-color: var(--bg-raised);
-    border-bottom: 1px solid var(--border-color);
+    justify-content: space-between;
+    gap: 40px;
 }
 
-.term-dot {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    display: inline-block;
+.hero-text {
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
-.term-dot-r { background-color: #ff6159; }
-.term-dot-y { background-color: #ffbd2e; }
-.term-dot-g { background-color: #28ca42; }
-
-.terminal-path {
-    margin-left: 8px;
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     font-family: var(--mono-font);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--text-on-surface);
+    margin-bottom: 22px;
 }
 
-.terminal-body {
-    padding: 32px 28px 36px;
+.hero-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--tertiary-color);
+    box-shadow: 0 0 0 0 var(--tertiary-color);
+    animation: hero-ping 2s ease-out infinite;
 }
 
-.term-line {
+@keyframes hero-ping {
+    0%   { box-shadow: 0 0 0 0 rgba(126, 232, 200, 0.6); }
+    100% { box-shadow: 0 0 0 10px rgba(126, 232, 200, 0); }
+}
+
+.hero-hello {
     font-family: var(--mono-font);
-    font-size: 0.9rem;
-    color: var(--tertiary-color);
-    margin-bottom: 6px;
-}
-
-.term-prompt {
+    font-size: 1rem;
     color: var(--primary-color);
-    margin-right: 8px;
+    margin-bottom: 4px;
 }
 
 .hd-about h1 {
-    font-size: 3.2rem;
-    line-height: 1.15;
-    margin: 2px 0 22px;
+    font-size: clamp(2.8rem, 6.5vw, 4.6rem);
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin: 0 0 14px;
+}
+
+/* Gradient name */
+.nm-spn {
+    background: linear-gradient(100deg, var(--primary-color) 0%, var(--tertiary-color) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 .hd-about h3 {
@@ -174,15 +203,163 @@ h1, h2, h3 {
     font-weight: 400;
     font-family: var(--body-font);
     color: var(--text-on-surface);
-}
-
-.nm-spn {
-    color: var(--text-on-bg);
+    min-height: 1.6em;
 }
 
 .hd-about h3 span#changing-txt {
-    color: var(--primary-color);
+    color: var(--text-on-bg);
     font-weight: 600;
+}
+
+.hero-sub {
+    margin: 20px 0 30px;
+    max-width: 46ch;
+    font-size: 1.02rem;
+    color: var(--text-on-surface);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.hero-actions .view-btn {
+    padding: 12px 28px;
+    font-size: 0.9rem;
+}
+
+/* ---- Orbit visual ---- */
+.hero-visual {
+    position: relative;
+    flex: 0 0 340px;
+    width: 340px;
+    height: 340px;
+    overflow: hidden;
+    overflow: clip;
+}
+
+.hero-glow {
+    position: absolute;
+    inset: 12%;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--primary-color) 0%, transparent 68%);
+    opacity: 0.16;
+    filter: blur(24px);
+}
+
+.orbit {
+    position: absolute;
+    border: 1px dashed var(--border-color);
+    border-radius: 50%;
+    animation: hero-spin 28s linear infinite;
+}
+
+.orbit-outer {
+    inset: 10%; /* leaves room inside the box for the icon chips */
+}
+
+.orbit-inner {
+    inset: 30%;
+    animation-duration: 20s;
+    animation-direction: reverse;
+    border-color: var(--primary-color);
+    border-style: dotted;
+    opacity: 0.9;
+}
+
+.chip-wrap {
+    position: absolute;
+    inset: 0;
+    transform: rotate(var(--a));
+}
+
+.chip {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 46px;
+    height: 46px;
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--a)));
+}
+
+.chip-sm {
+    width: 38px;
+    height: 38px;
+}
+
+/* Counter-rotate so icons stay upright while the orbit spins */
+.chip-in {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background-color: var(--glass-inner);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.5);
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    animation: hero-spin 28s linear infinite reverse;
+}
+
+.orbit-inner .chip-in {
+    animation-duration: 20s;
+    animation-direction: normal;
+    color: var(--tertiary-color);
+    font-size: 0.95rem;
+}
+
+.hero-hex {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    margin: -60px 0 0 -60px;
+    filter: drop-shadow(0 0 14px var(--primary-color));
+    animation: hero-spin 16s linear infinite;
+}
+
+.hh-outer { fill: none; stroke: var(--primary-color); stroke-width: 3; }
+.hh-inner { fill: none; stroke: var(--tertiary-color); stroke-width: 1.8; opacity: 0.8; }
+.hh-core  { fill: var(--primary-color); animation: hero-core 2s ease-in-out infinite; transform-origin: 80px 80px; }
+
+@keyframes hero-spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes hero-core {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.55; transform: scale(0.8); }
+}
+
+/* ---- Scroll cue ---- */
+.hero-scroll {
+    align-self: center;
+    margin-top: 40px;
+    width: 24px;
+    height: 40px;
+    border: 2px solid var(--text-on-surface);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    padding-top: 7px;
+    opacity: 0.7;
+}
+
+.hero-scroll span {
+    width: 3px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: var(--primary-color);
+    animation: hero-scroll 1.6s ease-in-out infinite;
+}
+
+@keyframes hero-scroll {
+    0%   { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(14px); opacity: 0; }
 }
 
 /* About Section */
@@ -223,73 +400,6 @@ h1, h2, h3 {
     margin-top: 30px;
 }
 
-/* Profile Card (About section, beside bio text) */
-.profile-card {
-    flex: 0 0 260px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 36px 24px;
-}
-
-.profile-ring {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    border: 2px solid var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.profile-initials {
-    font-family: var(--mono-font);
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--primary-color);
-    letter-spacing: 1px;
-}
-
-.profile-name {
-    font-size: 1.2rem;
-    margin-bottom: 4px;
-}
-
-.profile-role {
-    font-size: 0.88rem;
-    color: var(--text-on-surface);
-    margin-bottom: 22px;
-}
-
-.profile-links {
-    display: flex;
-    gap: 20px;
-}
-
-.profile-links a {
-    font-family: var(--mono-font);
-    font-size: 0.82rem;
-    color: var(--primary-color);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: opacity 0.2s ease;
-}
-
-.profile-links a:hover {
-    opacity: 0.7;
-}
-
-.profile-links a i {
-    font-size: 0.72rem;
-}
-
-
 /* About Section Tech Stack Pills */
 .tech-stack {
     display: flex;
@@ -302,7 +412,9 @@ h1, h2, h3 {
 }
 
 .stack-pill {
-    background-color: var(--bg-surface);
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     color: var(--text-on-surface);
     text-align: center;
     border: 1px solid var(--border-color);
@@ -325,7 +437,9 @@ h1, h2, h3 {
 }
 
 .skills-dv {
-    background-color: var(--bg-surface);
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 8px 32px 20px;
@@ -358,7 +472,7 @@ h1, h2, h3 {
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background-color: var(--bg-color);
+    background-color: var(--glass-inner);
     border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
@@ -384,7 +498,9 @@ h1, h2, h3 {
 }
 
 .projects {
-    background-color: var(--bg-surface);
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     padding: 30px;
     border-radius: 16px;
     border: 1px solid var(--border-color);
@@ -417,7 +533,7 @@ h1, h2, h3 {
     display: flex;
     align-items: stretch;
     min-width: 0;
-    background-color: var(--bg-color);
+    background-color: var(--glass-inner);
     border: 1px solid var(--border-color);
     border-radius: 14px;
     overflow: hidden;
@@ -431,7 +547,7 @@ h1, h2, h3 {
     height: auto;
     aspect-ratio: 4 / 3;
     object-fit: cover;
-    background-color: var(--bg-surface);
+    background-color: var(--glass-inner);
     border-right: 1px solid var(--border-color);
 }
 
@@ -466,14 +582,11 @@ h1, h2, h3 {
     padding: 9px 18px;
 }
 
-.buyit-span {
-    color: var(--primary-color);
-}
-
-
 /* Experience & Timeline */
 .timeline-wrap {
-    background-color: var(--bg-surface);
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     padding: 30px;
     border-radius: 16px;
     border: 1px solid var(--border-color);
@@ -510,7 +623,7 @@ h1, h2, h3 {
     height: 12px;
     border-radius: 50%;
     background-color: var(--primary-color);
-    box-shadow: 0 0 0 4px var(--bg-surface);
+    box-shadow: 0 0 0 4px var(--bg-color);
 }
 
 .timeline-date {
@@ -533,7 +646,9 @@ h1, h2, h3 {
 
 /* Certificates Layout */
 .courses {
-    background-color: var(--bg-surface);
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     padding: 30px;
     border-radius: 16px;
     border: 1px solid var(--border-color);
@@ -548,7 +663,7 @@ h1, h2, h3 {
 }
 
 .course-cert {
-    background-color: var(--bg-color);
+    background-color: var(--glass-inner);
     border: 1px solid var(--border-color);
     padding: 20px;
     border-radius: 12px;
@@ -600,7 +715,7 @@ h1, h2, h3 {
     width: 100%;
     margin-top: 20px;
     border: 1px solid var(--border-color);
-    background-color: var(--bg-color);
+    background-color: var(--glass-inner);
     color: var(--primary-color);
     cursor: pointer;
     font-family: var(--mono-font);
@@ -676,7 +791,9 @@ h1, h2, h3 {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: var(--bg-surface);
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     border: 1px solid var(--border-color);
     color: var(--text-on-bg);
     transition: all 0.25s ease;
@@ -720,7 +837,9 @@ h1, h2, h3 {
     gap: 1.5rem;
     border-radius: 12px;
     padding: 28px 30px;
-    background-color: var(--bg-surface);
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     border: 1px solid var(--border-color);
     text-align: left;
 }
@@ -743,12 +862,17 @@ h1, h2, h3 {
 /* Navigation Bar */
 .nav-bar {
     position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    width: max-content;
+    max-width: calc(100% - 24px);
     display: flex;
     gap: 12px;
-    background-color: var(--bg-surface);
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     padding: 10px 16px;
     border-radius: 50px;
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
@@ -777,6 +901,13 @@ h1, h2, h3 {
     color: var(--text-on-primary);
 }
 
+/* Desktop-only pieces of the top bar (hidden on phones) */
+.nav-label,
+.nav-logo,
+.nav-btn-desktop {
+    display: none;
+}
+
 /* Theme Toggle Button */
 #theme-toggle {
     position: fixed;
@@ -786,7 +917,9 @@ h1, h2, h3 {
     height: 46px;
     border-radius: 50%;
     color: var(--icon-color);
-    background-color: var(--bg-surface);
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     border: 1px solid var(--border-color);
     display: flex;
     justify-content: center;
@@ -818,7 +951,9 @@ h1, h2, h3 {
     height: 44px;
     border-radius: 50%;
     color: var(--icon-color);
-    background-color: var(--bg-surface);
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     border: 1px solid var(--border-color);
     display: flex;
     justify-content: center;
@@ -877,6 +1012,12 @@ button:focus-visible {
     }
 
     .cursor,
+    .orbit,
+    .chip-in,
+    .hero-hex,
+    .hh-core,
+    .hero-badge-dot,
+    .hero-scroll span,
     .reveal {
         animation: none;
         transition: none;
@@ -886,16 +1027,113 @@ button:focus-visible {
 }
 
 /* Responsive Rules */
-@media (min-width: 769px) {
+
+/* Desktop & tablet (768px+): simple full-width top bar —
+   logo on the left, text links in the middle, theme toggle on the right */
+@media (min-width: 768px) {
+    main {
+        padding-top: 68px; /* keep the first section clear of the bar */
+    }
+
+    html {
+        scroll-padding-top: 88px; /* anchor links land below the bar */
+    }
+
     .nav-bar {
-        top: 50%;
+        top: 0;
         bottom: auto;
-        right: 30px;
-        left: auto;
+        left: 0;
+        right: 0;
+        margin-inline: 0;
+        width: 100%;
+        max-width: none;
+        height: 68px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 0 24px;
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        border-radius: 0;
+        box-shadow: none;
+        background-color: var(--bg-color);
+        background-color: color-mix(in srgb, var(--bg-color) 60%, transparent);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+
+    .nav-logo {
+        display: block;
+        position: absolute;
+        left: 24px;
+        top: 50%;
         transform: translateY(-50%);
-        flex-direction: column;
-        border-radius: 30px;
-        padding: 20px 10px;
+        font-family: var(--mono-font);
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: var(--text-on-bg);
+        text-decoration: none;
+        letter-spacing: -0.5px;
+    }
+
+    .nav-logo span {
+        color: var(--primary-color);
+    }
+
+    /* Plain text links: no icons, no pills */
+    .nav-btn,
+    .nav-btn-desktop {
+        display: inline-block;
+        width: auto;
+        height: auto;
+        padding: 6px 2px;
+        border-radius: 0;
+        background: none;
+        color: var(--text-on-surface);
+    }
+
+    .nav-btn i {
+        display: none;
+    }
+
+    .nav-label {
+        display: inline;
+        font-family: var(--mono-font);
+        font-size: 0.8rem;
+    }
+
+    .nav-btn:hover {
+        background: none;
+        color: var(--primary-color);
+    }
+
+    /* Theme toggle sits inside the bar, on the right */
+    #theme-toggle {
+        top: 11px;
+        right: 24px;
+    }
+
+    /* Bottom nav is gone, so the scroll-to-top button returns to the corner */
+    .scroll-top-btn {
+        bottom: 30px;
+        right: 24px;
+    }
+}
+
+/* Roomier bar on larger screens */
+@media (min-width: 1024px) {
+    .nav-bar {
+        gap: 28px;
+        padding: 0 60px;
+    }
+
+    .nav-logo {
+        left: 60px;
+    }
+
+    #theme-toggle {
+        right: 60px;
     }
 }
 
@@ -906,12 +1144,39 @@ button:focus-visible {
         padding: 50px 16px;
     }
 
-    .terminal-body {
-        padding: 24px 20px 28px;
+    .hd-about {
+        min-height: auto;
+        text-align: center;
     }
 
-    .hd-about h1 {
-        font-size: 2.1rem;
+    .hero-inner {
+        flex-direction: column-reverse;
+        gap: 28px;
+    }
+
+    .hero-visual {
+        flex-basis: auto;
+        width: 250px;
+        height: 250px;
+    }
+
+    .hero-hex {
+        width: 90px;
+        height: 90px;
+        margin: -45px 0 0 -45px;
+    }
+
+    .hero-sub {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-scroll {
+        display: none;
     }
 
     .hd-about h3 {
@@ -930,12 +1195,6 @@ button:focus-visible {
 
     .tech-stack {
         justify-content: center;
-    }
-
-    .profile-card {
-        flex-basis: auto;
-        width: 100%;
-        max-width: 320px;
     }
 
     /* Reclaim width for project cards and images on small screens */
@@ -990,10 +1249,12 @@ button:focus-visible {
         align-items: center;
     }
 
-    /* Lift the scroll-to-top button above the bottom nav bar on mobile */
+}
+
+/* Phones only: lift the scroll-to-top button above the bottom nav bar */
+@media (max-width: 767px) {
     .scroll-top-btn {
         bottom: 90px;
         right: 16px;
     }
-
 }

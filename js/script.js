@@ -67,15 +67,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Apply saved theme on load (defaults to dark if nothing saved)
-    applyTheme(localStorage.getItem("theme"));
-
+    // (The saved theme is applied by the inline script in <head>, before first paint.)
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener("click", () => {
-            const isLight = root.getAttribute("data-theme") === "light";
-            const nextTheme = isLight ? "dark" : "light";
+            const nextTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
             applyTheme(nextTheme);
-            localStorage.setItem("theme", nextTheme);
+            try {
+                localStorage.setItem("theme", nextTheme);
+            } catch (e) { /* storage blocked: theme just won't persist */ }
         });
     }
 
@@ -84,9 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // .active is added when they scroll into view. The CSS for this is
     // the .reveal / .reveal.active rules in styles.css.
     const REVEAL_SELECTORS = [
-        ".terminal",
+        ".hero-text > *",
+        ".hero-visual",
         ".about-text > *",
-        ".profile-card",
         ".skills-main",
         ".skill-row",
         ".projects > h2",
@@ -107,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const revealTargets = Array.from(document.querySelectorAll(REVEAL_SELECTORS.join(",")));
 
-    // Stagger siblings that share a parent (e.g. skill rows, tech pills)
+    // Stagger siblings that share a parent (e.g. skill rows, hero lines)
     const siblingCount = new Map();
     revealTargets.forEach((el) => {
         const n = siblingCount.get(el.parentElement) || 0;
@@ -207,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (scrollTopBtn) {
         window.addEventListener("scroll", () => {
             scrollTopBtn.classList.toggle("visible", window.scrollY > SHOW_AFTER_PX);
-        });
+        }, { passive: true });
 
         scrollTopBtn.addEventListener("click", () => {
             window.scrollTo({ top: 0, behavior: "smooth" });

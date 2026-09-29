@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amit Kumar | AksVerse Portfolio</title>
   <meta name="description"
@@ -31,12 +30,14 @@
 
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/aksverse-loader.css">
-  <script src="https://kit.fontawesome.com/2a9a534f60.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/2a9a534f60.js" crossorigin="anonymous" defer></script>
   <script>
-    // This code is here because of theme will never get confused while on loading screen
-    if (localStorage.getItem("theme") === "light") {
-      document.documentElement.setAttribute("data-theme", "light");
-    }
+    // Runs before first paint so the saved theme never flashes (also covers the loader)
+    try {
+      if (localStorage.getItem("theme") === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    } catch (e) { /* storage blocked: default to dark */ }
   </script>
 </head>
 
@@ -44,8 +45,8 @@
   <canvas id="site-particles" class="site-particles" aria-hidden="true"></canvas>
 
   <!-- ===== AksVerse Loader ===== -->
-  <div id="aksverse-loader">
-    <canvas id="aksverse-particles" class="aksverse-particles"></canvas>
+  <div id="aksverse-loader" role="status" aria-label="Loading">
+    <canvas id="aksverse-particles" class="aksverse-particles" aria-hidden="true"></canvas>
 
     <svg class="aksverse-hex" viewBox="0 0 160 160">
       <polygon class="hex-outer" points="80,10 141,45 141,115 80,150 19,115 19,45"></polygon>
@@ -59,7 +60,7 @@
       <circle class="hex-dot" cx="19" cy="45" r="4"></circle>
     </svg>
 
-    <h1 class="aksverse-title">Welcome to AksVerse</h1>
+    <p class="aksverse-title">Welcome to AksVerse</p>
     <p class="aksverse-subtitle">Portfolio of Amit Kumar</p>
 
     <div class="aksverse-dots">
@@ -71,24 +72,36 @@
   <!-- ===== end loader ===== -->
 
   <nav class="nav-bar" aria-label="Main Navigation">
+    <a href="#about" class="nav-logo" aria-label="AksVerse home">AksVerse</a>
+
     <a href="#about" class="nav-btn" aria-label="Go to About section">
       <i class="fa-solid fa-house" aria-hidden="true"></i>
+      <span class="nav-label">About</span>
     </a>
 
     <a href="#skills" class="nav-btn" aria-label="Go to Skills Section">
       <i class="fa-solid fa-code" aria-hidden="true"></i>
+      <span class="nav-label">Skills</span>
     </a>
 
     <a href="#projects-main" class="nav-btn" aria-label="Go to Projects section">
       <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+      <span class="nav-label">Projects</span>
+    </a>
+
+    <a href="#experience" class="nav-btn nav-btn-desktop" aria-label="Go to Experience section">
+      <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+      <span class="nav-label">Experience</span>
     </a>
 
     <a href="#courses" class="nav-btn" aria-label="Go to Courses section">
       <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+      <span class="nav-label">Courses</span>
     </a>
 
     <a href="#contact" class="nav-btn" aria-label="Go to Contact section">
       <i class="fa-solid fa-circle-user" aria-hidden="true"></i>
+      <span class="nav-label">Contact</span>
     </a>
 
   </nav>
@@ -96,20 +109,39 @@
   <main>
     <section id="about">
       <div class="hd-about">
-        <div class="terminal">
-          <div class="terminal-bar">
-            <span class="term-dot term-dot-r" aria-hidden="true"></span>
-            <span class="term-dot term-dot-y" aria-hidden="true"></span>
-            <span class="term-dot term-dot-g" aria-hidden="true"></span>
-            <span class="terminal-path">amit@aksverse:~</span>
-          </div>
-          <div class="terminal-body">
-            <p class="term-line"><span class="term-prompt">$</span> whoami</p>
+        <div class="hero-inner">
+          <div class="hero-text">
+            <span class="hero-badge"><span class="hero-badge-dot" aria-hidden="true"></span>Welcome to AksVerse</span>
+            <p class="hero-hello">Hi, I'm</p>
             <h1><span class="nm-spn">Amit Kumar</span></h1>
-            <p class="term-line"><span class="term-prompt">$</span> role --current</p>
             <h3>I am a/an <span id="changing-txt"></span><span class="cursor"></span></h3>
+            <p class="hero-sub">Computer Science student crafting clean, responsive websites and software logic &mdash; built from scratch.</p>
+            <div class="hero-actions">
+              <a href="#projects-main" class="view-btn view-btn-accent">View Projects</a>
+              <a href="#contact" class="view-btn">Contact Me</a>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hero-glow"></div>
+            <div class="orbit orbit-outer">
+              <div class="chip-wrap" style="--a:0deg"><div class="chip"><div class="chip-in"><i class="fa-solid fa-code"></i></div></div></div>
+              <div class="chip-wrap" style="--a:120deg"><div class="chip"><div class="chip-in"><i class="fa-solid fa-scissors"></i></div></div></div>
+              <div class="chip-wrap" style="--a:240deg"><div class="chip"><div class="chip-in"><i class="fa-brands fa-python"></i></div></div></div>
+            </div>
+            <div class="orbit orbit-inner">
+              <div class="chip-wrap" style="--a:60deg"><div class="chip chip-sm"><div class="chip-in"><i class="fa-brands fa-js"></i></div></div></div>
+              <div class="chip-wrap" style="--a:240deg"><div class="chip chip-sm"><div class="chip-in"><i class="fa-brands fa-html5"></i></div></div></div>
+            </div>
+            <svg class="hero-hex" viewBox="0 0 160 160">
+              <polygon class="hh-outer" points="80,10 141,45 141,115 80,150 19,115 19,45"></polygon>
+              <polygon class="hh-inner" points="80,34 117,53 117,107 80,126 43,107 43,53"></polygon>
+              <circle class="hh-core" cx="80" cy="80" r="10"></circle>
+            </svg>
           </div>
         </div>
+
+        <a href="#skills" class="hero-scroll" aria-label="Scroll down"><span></span></a>
       </div>
 
       <div class="about-content">
@@ -130,10 +162,6 @@
 
           <div class="about-actions">
             <a href="#skills" class="view-btn">See My Work</a>
-            <!-- <a href="https://drive.google.com/your-resume-link-here" target="_blank" rel="noopener noreferrer"
-              class="view-btn view-btn-accent">
-              Download CV <i class="fa-solid fa-download" aria-hidden="true"></i>
-            </a> -->
           </div>
         </div>
       </div>
@@ -174,7 +202,7 @@
         <ul class="proj-ul">
           <li>
             <div class="proj-card">
-              <img class="proj-img" src="images/projects/portfolio.png"
+              <img class="proj-img" loading="lazy" decoding="async" src="images/projects/portfolio.png"
                 alt="Screenshot of the AksVerse portfolio website">
               <div class="proj-body">
                 <strong>AksVerse Portfolio Website <i class="fa-solid fa-briefcase" aria-hidden="true"></i></strong>
@@ -182,7 +210,7 @@
                   and a dynamic typing effect, built without external UI frameworks.</span>
                 <div class="proj-links">
                   <a href="https://github.com/Amittkumarr07/AksVerse" class="view-btn">View Code
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                   </a>
 
                   <a href="https://theamitkumar.in" class="view-btn view-btn-accent">Live Site</a>
@@ -192,7 +220,7 @@
           </li>
           <li>
             <div class="proj-card">
-              <img class="proj-img" src="images/projects/calculator.png"
+              <img class="proj-img" loading="lazy" decoding="async" src="images/projects/calculator.png"
                 alt="Screenshot of the C command-line calculator">
               <div class="proj-body">
                 <strong>Basic Calculator using C <i class="fa-solid fa-calculator" aria-hidden="true"></i></strong>
@@ -200,7 +228,7 @@
                   demonstrating proficiency in C syntax and control structures.</span>
                 <div class="proj-links">
                   <a href="https://github.com/Amittkumarr07/Simple-calculator.git" class="view-btn">View Code
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -257,7 +285,7 @@
           <a href="https://drive.google.com/file/d/1BJT2VEJ16rqidTtsv-nPBJXA5o8P_ZrZ/view?usp=drivesdk" target="_blank"
             rel="noopener noreferrer" class="view-btn">
             View Certificate
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
           </a>
         </div>
 
@@ -268,7 +296,7 @@
           <a href="https://drive.google.com/file/d/1T7KHaY__vCw7gqhrmDyDNO4qZYwUaRsA/view?usp=drivesdk" target="_blank"
             rel="noopener noreferrer" class="view-btn">
             View Certificate
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
           </a>
         </div>
 
@@ -279,7 +307,7 @@
           <a href="https://drive.google.com/file/d/1PMWRA9GhsoEdLuBesFfVD3J_jywL0Ynm/view?usp=drivesdk" target="_blank"
             rel="noopener noreferrer" class="view-btn">
             View Certificate
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
           </a>
         </div>
 
@@ -293,7 +321,7 @@
               <a href="https://drive.google.com/file/d/1xVsskvdO_MdWraIfDVA3SD_SXMENlk5v/view?usp=drivesdk"
                 target="_blank" rel="noopener noreferrer" class="view-btn">
                 View Certificate
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
               </a>
             </div>
 
@@ -304,7 +332,7 @@
               <a href="https://drive.google.com/file/d/1vbfNjIehzxhpXeldcPNMzduxjz30cPKG/view?usp=drivesdk"
                 target="_blank" rel="noopener noreferrer" class="view-btn">
                 View Certificate
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
               </a>
             </div>
 
@@ -331,10 +359,10 @@
         </div>
         <a href="https://forms.gle/NsfsUWU5ZkCr9MzB7" class="view-btn">
           Open contact form
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
         </a>
       </div>
-      <div class="contact-icon reveal">
+      <div class="contact-icon">
         <a href="https://www.linkedin.com/in/amittkumar7" target="_blank" rel="noopener noreferrer"
           aria-label="Visit my LinkedIn">
           <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
@@ -343,7 +371,7 @@
           aria-label="Visit my GitHub">
           <i class="fa-brands fa-github" aria-hidden="true"></i>
         </a>
-        <a href="mailto:amitkumar9110311@gmail.com" target="_blank" rel="noopener noreferrer"
+        <a href="mailto:amitkumar9110311@gmail.com"
           aria-label="Send me an email">
           <i class="fa-solid fa-envelope-open" aria-hidden="true"></i>
         </a>

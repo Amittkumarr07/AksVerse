@@ -1,6 +1,7 @@
 /* ============================================
    AksVerse Loading Screen
-   Same variable for maintain consistancy
+   Uses the same theme variables as the rest of
+   the site, so it matches dark/light mode.
    ============================================ */
 
 #aksverse-loader {
@@ -60,6 +61,8 @@
 
 .hex-core {
   fill: var(--primary-color);
+  /* scale from the circle's own centre, not the SVG's top-left corner */
+  transform-origin: 80px 80px;
   animation: aksverse-pulse 1.8s ease-in-out infinite;
 }
 
@@ -77,7 +80,11 @@
   50%      { opacity: 0.6; transform: scale(0.85); }
 }
 
-/* ---- Reveal everything together ---- */
+/* ---- Reveal everything together ----
+   The hex mark, text and dots all stay hidden until the `fonts-loaded`
+   class is added by JS (once the real webfont has loaded), then fade
+   in as ONE unit. This stops the logo showing first and the text
+   popping in a moment later. */
 .aksverse-hex,
 .aksverse-title,
 .aksverse-subtitle,

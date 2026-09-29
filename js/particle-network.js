@@ -26,9 +26,10 @@ function createParticleNetwork(canvas, options) {
 
   var ctx = canvas.getContext("2d");
   var particles = [];
-  var width, height, dpr;
+  var width = 0, height = 0, dpr = 1;
   var rafId = null;
   var running = true;
+  var linkDistSq = opts.linkDistance * opts.linkDistance;
 
   function themeColor(varName, fallback) {
     var value = getComputedStyle(document.documentElement)
@@ -45,13 +46,36 @@ function createParticleNetwork(canvas, options) {
     return { r: (num >> 16) & 255, g: (num >> 8) & 255, b: num & 255 };
   }
 
+  // Colours are read once, then again only when the theme changes
+  // (instead of on every animation frame).
+  var dotRgb, lineRgb;
+  function readColors() {
+    dotRgb = hexToRgb(themeColor(opts.dotColorVar, opts.dotColorFallback));
+    lineRgb = hexToRgb(themeColor(opts.lineColorVar, opts.lineColorFallback));
+  }
+  readColors();
+
+  var themeObserver = new MutationObserver(readColors);
+  themeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"]
+  });
+
   function resize() {
+    var newWidth = canvas.clientWidth;
+    var newHeight = canvas.clientHeight;
+    var widthChanged = newWidth !== width;
+
     dpr = window.devicePixelRatio || 1;
-    width = canvas.clientWidth;
-    height = canvas.clientHeight;
+    width = newWidth;
+    height = newHeight;
     canvas.width = width * dpr;
     canvas.height = height * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    // Phones fire "resize" whenever the address bar shows/hides (height only).
+    // Keep the existing particles then, so the network doesn't jump around.
+    if (particles.length && !widthChanged) return;
 
     var target = Math.min(opts.maxParticles, Math.floor((width * height) / opts.spacing));
     particles = [];
@@ -68,10 +92,9 @@ function createParticleNetwork(canvas, options) {
   function step() {
     if (!running) return;
 
-    var dotRgb = hexToRgb(themeColor(opts.dotColorVar, opts.dotColorFallback));
-    var lineRgb = hexToRgb(themeColor(opts.lineColorVar, opts.lineColorFallback));
-
     ctx.clearRect(0, 0, width, height);
+
+    var dotStyle = "rgba(" + dotRgb.r + "," + dotRgb.g + "," + dotRgb.b + "," + opts.dotOpacity + ")";
 
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
@@ -85,23 +108,23 @@ function createParticleNetwork(canvas, options) {
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(" + dotRgb.r + "," + dotRgb.g + "," + dotRgb.b + "," + opts.dotOpacity + ")";
+      ctx.fillStyle = dotStyle;
       ctx.fill();
     }
 
+    ctx.lineWidth = 1;
     for (var a = 0; a < particles.length; a++) {
       for (var b = a + 1; b < particles.length; b++) {
         var dx = particles[a].x - particles[b].x;
         var dy = particles[a].y - particles[b].y;
-        var dist = Math.sqrt(dx * dx + dy * dy);
+        var distSq = dx * dx + dy * dy;
 
-        if (dist < opts.linkDistance) {
-          var opacity = (1 - dist / opts.linkDistance) * opts.linkOpacity;
+        if (distSq < linkDistSq) {
+          var opacity = (1 - Math.sqrt(distSq) / opts.linkDistance) * opts.linkOpacity;
           ctx.beginPath();
           ctx.moveTo(particles[a].x, particles[a].y);
           ctx.lineTo(particles[b].x, particles[b].y);
           ctx.strokeStyle = "rgba(" + lineRgb.r + "," + lineRgb.g + "," + lineRgb.b + "," + opacity + ")";
-          ctx.lineWidth = 1;
           ctx.stroke();
         }
       }
@@ -118,5 +141,6 @@ function createParticleNetwork(canvas, options) {
     running = false;
     if (rafId) window.cancelAnimationFrame(rafId);
     window.removeEventListener("resize", resize);
+    themeObserver.disconnect();
   };
 }
