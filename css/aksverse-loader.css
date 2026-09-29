@@ -1,7 +1,6 @@
 /* ============================================
    AksVerse Loading Screen
-   Uses the same theme variables as the rest of
-   the site, so it matches dark/light mode.
+   Same variable for maintain consistancy
    ============================================ */
 
 #aksverse-loader {
@@ -78,20 +77,20 @@
   50%      { opacity: 0.6; transform: scale(0.85); }
 }
 
-/* ---- Text ----
-   Hidden until the `fonts-loaded` class is added by JS (once the
-   real webfont has loaded), so text never visibly swaps fonts
-   while the loader is on screen. Falls back to visible after a
-   short delay in case JS or the Font Loading API doesn't run. */
+/* ---- Reveal everything together ---- */
+.aksverse-hex,
 .aksverse-title,
 .aksverse-subtitle,
+.aksverse-dots,
 .aksverse-loading {
   opacity: 0;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.35s ease;
 }
 
+.fonts-loaded .aksverse-hex,
 .fonts-loaded .aksverse-title,
 .fonts-loaded .aksverse-subtitle,
+.fonts-loaded .aksverse-dots,
 .fonts-loaded .aksverse-loading {
   opacity: 1;
 }

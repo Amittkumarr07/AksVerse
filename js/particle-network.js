@@ -13,9 +13,9 @@ function createParticleNetwork(canvas, options) {
 
   var opts = Object.assign({
     spacing: 9000,       // px^2 of area per particle
-    maxParticles: 90,
+    maxParticles: 120,
     linkDistance: 130,
-    speed: 0.18,
+    speed: 0.50,
     dotOpacity: 0.55,
     linkOpacity: 0.35,
     dotColorVar: "--tertiary-color",
