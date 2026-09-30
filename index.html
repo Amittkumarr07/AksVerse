@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0e11">
   <title>Amit Kumar | AksVerse Portfolio</title>
   <meta name="description"
     content="Amit Kumar — Computer Science and Engineering student at Govt. Polytechnic Raghopur, Supaul. Portfolio featuring web development projects, skills, and certifications.">
@@ -26,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;500;700&display=swap">
 
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/aksverse-loader.css">
@@ -48,7 +49,7 @@
   <div id="aksverse-loader" role="status" aria-label="Loading">
     <canvas id="aksverse-particles" class="aksverse-particles" aria-hidden="true"></canvas>
 
-    <svg class="aksverse-hex" viewBox="0 0 160 160">
+    <svg class="aksverse-hex" viewBox="0 0 160 160" aria-hidden="true">
       <polygon class="hex-outer" points="80,10 141,45 141,115 80,150 19,115 19,45"></polygon>
       <polygon class="hex-inner" points="80,34 117,53 117,107 80,126 43,107 43,53"></polygon>
       <circle class="hex-core" cx="80" cy="80" r="10"></circle>
@@ -111,10 +112,9 @@
       <div class="hd-about">
         <div class="hero-inner">
           <div class="hero-text">
-            <span class="hero-badge"><span class="hero-badge-dot" aria-hidden="true"></span>Welcome to AksVerse</span>
             <p class="hero-hello">Hi, I'm</p>
             <h1><span class="nm-spn">Amit Kumar</span></h1>
-            <h3>I am a/an <span id="changing-txt"></span><span class="cursor"></span></h3>
+            <p class="hero-role">I'm a <span id="changing-txt"></span><span class="cursor"></span></p>
             <p class="hero-sub">Computer Science &amp; Engineering student specializing in building clean, responsive websites from scratch.</p>
             <div class="hero-actions">
               <a href="#projects-main" class="view-btn view-btn-accent">View Projects</a>
@@ -133,7 +133,7 @@
               <div class="chip-wrap" style="--a:60deg"><div class="chip chip-sm"><div class="chip-in"><i class="fa-brands fa-js"></i></div></div></div>
               <div class="chip-wrap" style="--a:240deg"><div class="chip chip-sm"><div class="chip-in"><i class="fa-brands fa-html5"></i></div></div></div>
             </div>
-            <svg class="hero-hex" viewBox="0 0 160 160">
+            <svg class="hero-hex" viewBox="0 0 160 160" aria-hidden="true">
               <polygon class="hh-outer" points="80,10 141,45 141,115 80,150 19,115 19,45"></polygon>
               <polygon class="hh-inner" points="80,34 117,53 117,107 80,126 43,107 43,53"></polygon>
               <circle class="hh-core" cx="80" cy="80" r="10"></circle>
@@ -155,7 +155,7 @@
 
           <div class="tech-stack">
             <span class="stack-pill">JavaScript</span>
-            <span class="stack-pill">HTML5 & CSS3</span>
+            <span class="stack-pill">HTML5 &amp; CSS3</span>
             <span class="stack-pill">C</span>
             <span class="stack-pill">Python</span>
           </div>
@@ -205,7 +205,7 @@
               <img class="proj-img" loading="lazy" decoding="async" src="images/projects/portfolio.png"
                 alt="Screenshot of the AksVerse portfolio website">
               <div class="proj-body">
-                <strong>AksVerse Portfolio Website <i class="fa-solid fa-briefcase" aria-hidden="true"></i></strong>
+                <h3>AksVerse Portfolio Website <i class="fa-solid fa-briefcase" aria-hidden="true"></i></h3>
                 <span class="pj-spn">A fully responsive personal portfolio featuring a custom light/dark theme toggle
                   and a dynamic typing effect, built without external UI frameworks.</span>
                 <div class="proj-links">
@@ -223,11 +223,11 @@
               <img class="proj-img" loading="lazy" decoding="async" src="images/projects/calculator.png"
                 alt="Screenshot of the C command-line calculator">
               <div class="proj-body">
-                <strong>Basic Calculator using C <i class="fa-solid fa-calculator" aria-hidden="true"></i></strong>
+                <h3>Basic Calculator using C <i class="fa-solid fa-calculator" aria-hidden="true"></i></h3>
                 <span class="pj-spn">A command-line application that handles core arithmetic operations,
                   demonstrating proficiency in C syntax and control structures.</span>
                 <div class="proj-links">
-                  <a href="https://github.com/Amittkumarr07/Simple-calculator.git" class="view-btn">View Code
+                  <a href="https://github.com/Amittkumarr07/Simple-calculator" class="view-btn">View Code
                     <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                   </a>
                 </div>
@@ -240,14 +240,14 @@
 
     <section id="experience">
       <div class="timeline-wrap">
-        <h2 class="timeline-h2">Experience & Education</h2>
+        <h2 class="timeline-h2">Experience &amp; Education</h2>
         <ol class="timeline">
 
           <li class="timeline-item">
             <div class="timeline-dot" aria-hidden="true"></div>
             <div class="timeline-content">
               <span class="timeline-date">2023 — 2025</span>
-              <h3>Matriculation (Class IX & X)</h3>
+              <h3>Matriculation (Class IX &amp; X)</h3>
               <p>Dini International School, Gaya (affiliated with CBSE Delhi)</p>
             </div>
           </li>
@@ -264,7 +264,7 @@
           <li class="timeline-item">
             <div class="timeline-dot" aria-hidden="true"></div>
             <div class="timeline-content">
-              <span class="timeline-date">June - July 2026</span>
+              <span class="timeline-date">June – July 2026</span>
               <h3>2nd Year Internship</h3>
               <p>Tata Motors — hands-on internship applying core engineering and technical skills.</p>
             </div>
@@ -276,64 +276,59 @@
 
     <section id="courses">
       <div class="courses">
-        <h2 class="cc_h2">Courses & Certificates</h2>
+        <h2 class="cc_h2">Courses &amp; Certificates</h2>
 
         <div class="course-cert">
-          <h3>Introduction to Cybersecurity</h3>
-          <p>Cisco Networking Academy</p>
-          <p class="cert-date">Completed: March 2026</p>
-          <a href="https://drive.google.com/file/d/1BJT2VEJ16rqidTtsv-nPBJXA5o8P_ZrZ/view?usp=drivesdk" target="_blank"
-            rel="noopener noreferrer" class="view-btn">
-            View Certificate
-            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-          </a>
+          <i class="cert-icon fa-solid fa-shield-halved" aria-hidden="true"></i>
+          <div class="cert-info">
+            <h3>Introduction to Cybersecurity</h3>
+            <p class="cert-issuer">Cisco Networking Academy</p>
+            <p class="cert-date">Completed: March 2026</p>
+          </div>
+          <a href="https://drive.google.com/file/d/1BJT2VEJ16rqidTtsv-nPBJXA5o8P_ZrZ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn"> View Certificate <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> </a>
         </div>
 
         <div class="course-cert">
-          <h3>2nd Year Internship</h3>
-          <p>TATA MOTORS</p>
-          <p class="cert-date">Completed: July 2026</p>
-          <a href="https://drive.google.com/file/d/1T7KHaY__vCw7gqhrmDyDNO4qZYwUaRsA/view?usp=drivesdk" target="_blank"
-            rel="noopener noreferrer" class="view-btn">
-            View Certificate
-            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-          </a>
+          <i class="cert-icon fa-solid fa-industry" aria-hidden="true"></i>
+          <div class="cert-info">
+            <h3>2nd Year Internship</h3>
+            <p class="cert-issuer">TATA MOTORS</p>
+            <p class="cert-date">Completed: July 2026</p>
+          </div>
+          <a href="https://drive.google.com/file/d/1T7KHaY__vCw7gqhrmDyDNO4qZYwUaRsA/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn"> View Certificate <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> </a>
         </div>
 
         <div class="course-cert">
-          <h3>1st Year Rank</h3>
-          <p>Govt. Polytechnic Raghopur Supaul</p>
-          <p class="cert-date">Awarded: 15, August 2026</p>
-          <a href="https://drive.google.com/file/d/1PMWRA9GhsoEdLuBesFfVD3J_jywL0Ynm/view?usp=drivesdk" target="_blank"
-            rel="noopener noreferrer" class="view-btn">
-            View Certificate
-            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-          </a>
+          <i class="cert-icon fa-solid fa-trophy" aria-hidden="true"></i>
+          <div class="cert-info">
+            <h3>1st Year Rank</h3>
+            <p class="cert-issuer">Govt. Polytechnic Raghopur Supaul</p>
+            <p class="cert-date">Awarded: 15 August 2026</p>
+          </div>
+          <a href="https://drive.google.com/file/d/1PMWRA9GhsoEdLuBesFfVD3J_jywL0Ynm/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn"> View Certificate <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> </a>
         </div>
 
         <!-- This space for adding more certificate -->
         <div class="course-cert-extra" id="extra-courses">
           <div>
             <div class="course-cert">
-              <h3>Web Technology</h3>
-              <p>State Board of Technical Education, Bihar (SBTE)</p>
-              <p class="cert-date">Completed: January 2026</p>
-              <a href="https://drive.google.com/file/d/1xVsskvdO_MdWraIfDVA3SD_SXMENlk5v/view?usp=drivesdk"
-                target="_blank" rel="noopener noreferrer" class="view-btn">
-                View Certificate
-                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              </a>
+          <i class="cert-icon fa-solid fa-globe" aria-hidden="true"></i>
+          <div class="cert-info">
+            <h3>Web Technology</h3>
+            <p class="cert-issuer">State Board of Technical Education, Bihar (SBTE)</p>
+            <p class="cert-date">Completed: January 2026</p>
+          </div>
+          <a href="https://drive.google.com/file/d/1xVsskvdO_MdWraIfDVA3SD_SXMENlk5v/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn"> View Certificate <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> </a>
             </div>
 
             <div class="course-cert">
-              <h3>C Programming</h3>
-              <p>State Board of Technical Education, Bihar (SBTE)</p>
-              <p class="cert-date">Completed: March 2026</p>
-              <a href="https://drive.google.com/file/d/1vbfNjIehzxhpXeldcPNMzduxjz30cPKG/view?usp=drivesdk"
-                target="_blank" rel="noopener noreferrer" class="view-btn">
-                View Certificate
-                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-              </a>
+          <i class="cert-icon fa-solid fa-code" aria-hidden="true"></i>
+          <div class="cert-info">
+            <h3>C Programming</h3>
+            <p class="cert-issuer">State Board of Technical Education, Bihar (SBTE)</p>
+            <p class="cert-date">Completed: March 2026</p>
+          </div>
+          <a href="https://drive.google.com/file/d/1vbfNjIehzxhpXeldcPNMzduxjz30cPKG/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="view-btn"> View Certificate <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> </a>
             </div>
 
           </div>
@@ -375,7 +370,7 @@
           aria-label="Send me an email">
           <i class="fa-solid fa-envelope-open" aria-hidden="true"></i>
         </a>
-        <a href="https://www.instagram.com/amitt_kumar_7?igsh=MWl6czRhaGxpZGwzMg==" target="_blank"
+        <a href="https://www.instagram.com/amitt_kumar_7" target="_blank"
           rel="noopener noreferrer" aria-label="Visit my Instagram">
           <i class="fa-brands fa-instagram" aria-hidden="true"></i>
         </a>
@@ -396,9 +391,9 @@
     <p>Built by Amit Kumar</p>
   </footer>
 
-  <script src="js/script.js"></script>
   <script src="js/particle-network.js"></script>
   <script src="js/aksverse-loader.js"></script>
+  <script src="js/script.js"></script>
   <script src="js/site-background.js"></script>
 </body>
 

@@ -5,6 +5,15 @@
    ============================================ */
 
 (function () {
+  // Lets other scripts run once the loader is gone (or right away if there is none).
+  window.onSiteReady = function (fn) {
+    if (document.getElementById("aksverse-loader")) {
+      document.addEventListener("aksverse:ready", fn, { once: true });
+    } else {
+      fn();
+    }
+  };
+
   var loader = document.getElementById("aksverse-loader");
   if (!loader) return;
 
@@ -62,6 +71,7 @@
       setTimeout(function () {
         if (stopParticles) stopParticles();
         if (loader.parentNode) loader.parentNode.removeChild(loader);
+        document.dispatchEvent(new Event("aksverse:ready"));
       }, 650);
     }, remaining);
   }

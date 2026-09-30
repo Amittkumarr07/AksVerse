@@ -14,8 +14,6 @@ html {
 /* ===== Design tokens ===== */
 :root {
     --bg-color: #0b0e11;
-    --bg-surface: #12161b;
-    --bg-raised: #171c22;
     --border-color: #262d34;
 
     --primary-color: #ffb454;
@@ -33,7 +31,6 @@ html {
     --text-on-bg: #e8ecef;
     --text-on-surface: #8b96a1;
     --text-on-primary: #1c1204;
-    --text-on-tertiary: #062019;
 
     --display-font: "Space Grotesk", "Inter", sans-serif;
     --body-font: "Inter", sans-serif;
@@ -42,8 +39,6 @@ html {
 
 [data-theme="light"] {
     --bg-color: #f7f5f1;
-    --bg-surface: #eeebe4;
-    --bg-raised: #ffffff;
     --border-color: #d9d3c7;
 
     --primary-color: #b5590a;
@@ -57,16 +52,11 @@ html {
     --text-on-bg: #1a1712;
     --text-on-surface: #5c5548;
     --text-on-primary: #ffffff;
-    --text-on-tertiary: #ffffff;
 }
 
-html,
 body {
     overflow-x: hidden;
     overflow-x: clip;
-}
-
-body {
     background-color: var(--bg-color);
     color: var(--text-on-bg);
     font-family: var(--body-font);
@@ -110,7 +100,6 @@ body {
 }
 
 /* Layout Containers */
-header,
 section {
     max-width: 900px;
     margin: 0 auto;
@@ -145,36 +134,6 @@ h1, h2, h3 {
     min-width: 0;
 }
 
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px 14px;
-    border: 1px solid var(--border-color);
-    border-radius: 50px;
-    background-color: var(--glass-bg);
-    -webkit-backdrop-filter: var(--glass-blur);
-    backdrop-filter: var(--glass-blur);
-    font-family: var(--mono-font);
-    font-size: 0.78rem;
-    color: var(--text-on-surface);
-    margin-bottom: 22px;
-}
-
-.hero-badge-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: var(--tertiary-color);
-    box-shadow: 0 0 0 0 var(--tertiary-color);
-    animation: hero-ping 2s ease-out infinite;
-}
-
-@keyframes hero-ping {
-    0%   { box-shadow: 0 0 0 0 rgba(126, 232, 200, 0.6); }
-    100% { box-shadow: 0 0 0 10px rgba(126, 232, 200, 0); }
-}
-
 .hero-hello {
     font-family: var(--mono-font);
     font-size: 1rem;
@@ -198,7 +157,7 @@ h1, h2, h3 {
     color: transparent;
 }
 
-.hd-about h3 {
+.hero-role {
     font-size: 1.5rem;
     font-weight: 400;
     font-family: var(--body-font);
@@ -206,7 +165,7 @@ h1, h2, h3 {
     min-height: 1.6em;
 }
 
-.hd-about h3 span#changing-txt {
+.hero-role #changing-txt {
     color: var(--text-on-bg);
     font-weight: 600;
 }
@@ -375,21 +334,11 @@ h1, h2, h3 {
     max-width: 58ch;
 }
 
-.about-main-p span {
-    color: var(--text-on-bg);
-    font-weight: 600;
-}
-
 .about-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 50px;
     margin-top: 40px;
 }
 
 .about-text {
-    flex: 1;
     max-width: 600px;
 }
 
@@ -403,8 +352,6 @@ h1, h2, h3 {
 /* About Section Tech Stack Pills */
 .tech-stack {
     display: flex;
-    align-content: center;
-    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 24px;
@@ -432,10 +379,6 @@ h1, h2, h3 {
 }
 
 /* ===== Skills — command list, not repeated cards ===== */
-#skills {
-    max-width: 900px;
-}
-
 .skills-dv {
     background-color: var(--glass-bg);
     -webkit-backdrop-filter: var(--glass-blur);
@@ -493,10 +436,6 @@ h1, h2, h3 {
 }
 
 /* Projects Layout */
-#projects-main {
-    max-width: 900px;
-}
-
 .projects {
     background-color: var(--glass-bg);
     -webkit-backdrop-filter: var(--glass-blur);
@@ -557,7 +496,7 @@ h1, h2, h3 {
     padding: 20px 22px;
 }
 
-.proj-body strong {
+.proj-body h3 {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -565,7 +504,7 @@ h1, h2, h3 {
     font-family: var(--display-font);
 }
 
-.proj-body strong i {
+.proj-body h3 i {
     font-size: 0.9rem;
     color: var(--primary-color);
 }
@@ -600,7 +539,6 @@ h1, h2, h3 {
 }
 
 .timeline {
-    position: relative;
     margin-left: 10px;
     padding-left: 30px;
     border-left: 2px solid var(--border-color);
@@ -656,29 +594,90 @@ h1, h2, h3 {
 
 .cc_h2 {
     font-size: 1.9rem;
-    color: var(--text-on-bg);
     padding-bottom: 16px;
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 6px;
 }
 
 .course-cert {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 10px 18px;
+    margin-top: 15px;
+    padding: 18px 20px 18px 26px;
     background-color: var(--glass-inner);
     border: 1px solid var(--border-color);
-    padding: 20px;
     border-radius: 12px;
-    margin-top: 15px;
+    transition: border-color 0.25s ease;
+}
+
+/* Same amber-to-mint rule as the hero text */
+.course-cert::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 16px;
+    bottom: 16px;
+    width: 3px;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--tertiary-color));
+    opacity: 0.85;
+}
+
+.course-cert:hover {
+    border-color: var(--primary-color);
+}
+
+.cert-icon {
+    width: 44px;
+    height: 44px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background-color: var(--glass-inner);
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.cert-info {
+    min-width: 0;
+}
+
+.cert-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.cert-issuer {
+    font-size: 0.9rem;
+    color: var(--text-on-surface);
 }
 
 .cert-date {
-    font-size: 0.85rem;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 2px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
     font-family: var(--mono-font);
-    color: var(--text-on-surface);
-    margin-bottom: 10px;
+    font-size: 0.78rem;
+    color: var(--tertiary-color);
+}
+
+/* Certificate button takes the card's accent colour */
+.course-cert .view-btn {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    white-space: nowrap;
+}
+
+.course-cert .view-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--text-on-primary);
 }
 
 /* Extra courses collapse */
@@ -686,25 +685,24 @@ h1, h2, h3 {
     display: grid;
     grid-template-rows: 0fr;
     opacity: 0;
+    visibility: hidden; /* keeps hidden links out of the keyboard tab order */
     transition:
         grid-template-rows 0.4s ease,
-        opacity 0.3s ease;
+        opacity 0.3s ease,
+        visibility 0s linear 0.4s;
 }
 
 .course-cert-extra.open {
     grid-template-rows: 1fr;
     opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
 }
 
 .course-cert-extra>div {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-}
-
-.course-cert-extra .course-cert {
-    margin-top: 15px;
 }
 
 .courses-toggle-btn {
@@ -727,10 +725,6 @@ h1, h2, h3 {
     border-color: var(--primary-color);
 }
 
-.courses-toggle-btn i {
-    transition: transform 0.3s ease;
-}
-
 /* Buttons */
 .view-btn {
     background-color: transparent;
@@ -748,7 +742,7 @@ h1, h2, h3 {
 
 .view-btn:hover {
     border-color: var(--primary-color);
-    color: var(--text-on-surface);
+    color: var(--primary-color);
 }
 
 /* Filled variant for primary calls-to-action */
@@ -862,33 +856,36 @@ h1, h2, h3 {
 /* Navigation Bar */
 .nav-bar {
     position: fixed;
-    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
-    left: 0;
-    right: 0;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    left: 12px;
+    right: 12px;
     margin-inline: auto;
-    width: max-content;
-    max-width: calc(100% - 24px);
+    width: auto;
+    max-width: 440px;
     display: flex;
-    gap: 12px;
+    justify-content: space-between;
+    gap: 4px;
     background-color: var(--glass-bg);
     -webkit-backdrop-filter: var(--glass-blur);
     backdrop-filter: var(--glass-blur);
-    padding: 10px 16px;
-    border-radius: 50px;
+    padding: 8px;
+    border-radius: 26px;
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--border-color);
     z-index: 1000;
 }
 
 .nav-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
+    flex: 1 1 0;
+    min-width: 0;
+    height: 54px;
+    border-radius: 18px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 4px;
     color: var(--text-on-surface);
-    text-decoration: none;
     transition: all 0.2s ease;
 }
 
@@ -902,10 +899,21 @@ h1, h2, h3 {
 }
 
 /* Desktop-only pieces of the top bar (hidden on phones) */
-.nav-label,
 .nav-logo,
 .nav-btn-desktop {
     display: none;
+}
+
+.nav-label {
+    font-family: var(--mono-font);
+    font-size: 0.62rem;
+    line-height: 1;
+}
+
+/* Section currently in view (set by script.js) */
+.nav-btn[aria-current="true"] {
+    background-color: var(--primary-color);
+    color: var(--text-on-primary);
 }
 
 /* Theme Toggle Button */
@@ -1016,7 +1024,6 @@ button:focus-visible {
     .chip-in,
     .hero-hex,
     .hh-core,
-    .hero-badge-dot,
     .hero-scroll span,
     .reveal {
         animation: none;
@@ -1073,12 +1080,7 @@ button:focus-visible {
         font-weight: 700;
         font-size: 1.3rem;
         color: var(--text-on-bg);
-        text-decoration: none;
         letter-spacing: -0.5px;
-    }
-
-    .nav-logo span {
-        color: var(--primary-color);
     }
 
     /* Plain text links: no icons, no pills */
@@ -1087,6 +1089,7 @@ button:focus-visible {
         display: inline-block;
         width: auto;
         height: auto;
+        flex: none;
         padding: 6px 2px;
         border-radius: 0;
         background: none;
@@ -1103,9 +1106,14 @@ button:focus-visible {
         font-size: 0.8rem;
     }
 
-    .nav-btn:hover {
+    .nav-btn:hover,
+    .nav-btn[aria-current="true"] {
         background: none;
         color: var(--primary-color);
+    }
+
+    .nav-btn[aria-current="true"] {
+        box-shadow: inset 0 -2px 0 var(--primary-color);
     }
 
     /* Theme toggle sits inside the bar, on the right */
@@ -1137,72 +1145,145 @@ button:focus-visible {
     }
 }
 
-@media (max-width: 768px) {
-
-    header,
+/* ===== Phones (up to 767px) ===== */
+@media (max-width: 767px) {
     section {
-        padding: 50px 16px;
+        padding: 28px 16px;
     }
 
+    #theme-toggle {
+        top: 14px;
+        right: 14px;
+        width: 42px;
+        height: 42px;
+    }
+
+    .scroll-top-btn {
+        bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+        right: 16px;
+    }
+
+    /* ---- Hero (phones) ----
+       Big animated logo on top, left-aligned text underneath with a
+       gradient rule down its left edge. */
     .hd-about {
-        min-height: auto;
-        text-align: center;
+        min-height: 0;
+        margin: 0;
+        padding-top: 20px;
     }
 
     .hero-inner {
         flex-direction: column-reverse;
-        gap: 28px;
+        align-items: stretch;
+        gap: 22px;
     }
 
+    .hero-text {
+        position: relative;
+        padding-left: 18px;
+    }
+
+    /* gradient rule down the left edge of the text block */
+    .hero-text::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 6px;
+        bottom: 6px;
+        width: 2px;
+        border-radius: 2px;
+        background: linear-gradient(to bottom, var(--primary-color), var(--tertiary-color));
+        opacity: 0.85;
+    }
+
+    /* Logo: nearly full width (was 150-190px), keeps all five icons */
     .hero-visual {
-        flex-basis: auto;
-        width: 250px;
-        height: 250px;
+        align-self: center;
+        flex: none;
+        width: clamp(250px, 82vw, 320px);
+        height: clamp(250px, 82vw, 320px);
     }
 
     .hero-hex {
-        width: 90px;
-        height: 90px;
-        margin: -45px 0 0 -45px;
+        width: 92px;
+        height: 92px;
+        margin: -46px 0 0 -46px;
+    }
+
+    .hero-hello::before {
+        content: "> ";
+        color: var(--tertiary-color);
+    }
+
+    .hero-hello {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+    }
+
+    .hd-about h1 {
+        font-size: clamp(2.9rem, 15vw, 3.8rem);
+        line-height: 1;
+        letter-spacing: -1.5px;
+        margin: 0 0 16px;
+    }
+
+    .hero-role {
+        font-family: var(--mono-font);
+        font-size: 1rem;
     }
 
     .hero-sub {
-        margin-left: auto;
-        margin-right: auto;
+        margin: 18px 0 26px;
+        max-width: none;
+        font-size: 0.95rem;
     }
 
     .hero-actions {
-        justify-content: center;
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
+
+    .hero-actions .view-btn {
+        flex: 1;
+        padding: 14px 8px;
     }
 
     .hero-scroll {
         display: none;
     }
 
-    .hd-about h3 {
-        font-size: 1.2rem;
+    /* About: left-aligned paragraphs read better than centred ones */
+    .about-content {
+        margin-top: 32px;
     }
 
-    .about-content {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 40px;
+    .about-main-h {
+        font-size: 1.7rem;
     }
 
     .about-main-p {
+        font-size: 1rem;
         max-width: none;
     }
 
-    .tech-stack {
-        justify-content: center;
+    .about-actions .view-btn {
+        width: 100%;
+        padding: 14px;
     }
 
-    /* Reclaim width for project cards and images on small screens */
+    /* Cards */
     .projects,
     .skills-dv,
     .timeline-wrap,
-    .courses {
+    .courses,
+    .connect {
         padding: 20px;
+        border-radius: 18px;
+    }
+
+    .skills-dv {
+        padding-top: 4px;
+        padding-bottom: 8px;
     }
 
     .skills-main,
@@ -1212,14 +1293,39 @@ button:focus-visible {
         font-size: 1.5rem;
     }
 
-    .proj-body {
-        flex: 1 1 auto;
-        padding: 14px 16px;
+    .skill-row {
+        gap: 16px;
+        padding: 14px 0;
     }
 
-    /* Stack image above text on narrow screens — side-by-side gets too cramped */
+    /* Projects: swipeable carousel with the next card peeking in */
+    .proj-ul {
+        display: flex;
+        gap: 14px;
+        margin: 0 -20px;
+        padding: 2px 20px 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 20px;
+        scrollbar-width: none;
+    }
+
+    .proj-ul::-webkit-scrollbar {
+        display: none;
+    }
+
+    .proj-ul li,
+    .proj-ul li:first-child {
+        flex: 0 0 86%;
+        display: flex;
+        margin: 0;
+        scroll-snap-align: start;
+    }
+
     .proj-card {
         flex-direction: column;
+        width: 100%;
     }
 
     .proj-img {
@@ -1232,29 +1338,63 @@ button:focus-visible {
         border-bottom: 1px solid var(--border-color);
     }
 
-    .proj-links {
+    .proj-body {
+        display: flex;
         flex-direction: column;
+        flex: 1 1 auto;
+        padding: 16px;
+    }
+
+    .proj-links {
+        margin-top: auto;
+        padding-top: 16px;
     }
 
     .proj-links .view-btn {
+        flex: 1;
         text-align: center;
     }
 
+    .course-cert {
+        grid-template-columns: auto 1fr;
+        padding: 16px 16px 16px 24px;
+    }
+
+    .course-cert .view-btn {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    /* Contact */
     .connect {
         flex-direction: column;
-        text-align: center;
+        align-items: stretch;
     }
 
-    .idea {
-        align-items: center;
+    .connect .view-btn {
+        width: 100%;
+        padding: 14px;
     }
 
-}
+    #contact {
+        text-align: left;
+        padding-bottom: 110px;
+    }
 
-/* Phones only: lift the scroll-to-top button above the bottom nav bar */
-@media (max-width: 767px) {
-    .scroll-top-btn {
-        bottom: 90px;
-        right: 16px;
+    .site-footer {
+        text-align: left;
+    }
+
+    .contact-icon {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 36px;
+    }
+
+    .contact-icon a {
+        width: auto;
+        height: 56px;
+        border-radius: 16px;
     }
 }

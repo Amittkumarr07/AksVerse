@@ -16,21 +16,4 @@ function startSiteBackground() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  var loader = document.getElementById("aksverse-loader");
-
-  // If the loader is already gone (or never existed), start right away.
-  if (!loader) {
-    startSiteBackground();
-    return;
-  }
-
-  // Otherwise wait for the loader to be removed from the DOM.
-  var observer = new MutationObserver(function () {
-    if (!document.getElementById("aksverse-loader")) {
-      observer.disconnect();
-      startSiteBackground();
-    }
-  });
-  observer.observe(document.body, { childList: true });
-});
+window.onSiteReady(startSiteBackground);
