@@ -1,177 +1,77 @@
-document.addEventListener("DOMContentLoaded", () => {
+(function () {
+    "use strict";
+    var root = document.documentElement;
+    var pages = Array.prototype.slice.call(document.querySelectorAll(".container"));
+    var controls = document.querySelectorAll(".control");
+    var themeBtn = document.querySelector(".theme-btn");
+    var themeMeta = document.querySelector('meta[name="theme-color"]');
 
-    // --- Typing Effect ---
-    const words = ["developer.", "designer.", "video editor."];
-    const typingSpeed = 150;
-    const deletingSpeed = 100;
-    const pauseDelay = 2000;
-    const nextWordDelay = 500;
+    pages.forEach(function (p) { p.setAttribute("tabindex", "-1"); });
 
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
+    // Show one page; the URL hash drives it, so Back/Forward and deep links work
+    function route(fromUser) {
+        var id = "";
+        try { id = decodeURIComponent(location.hash.slice(1)); } catch (e) {}
+        var target = id ? document.getElementById(id) : null;
+        var page = target && target.closest(".container");
+        if (!page) { page = pages[0]; target = null; }
 
-    const targetElement = document.getElementById("changing-txt");
+        pages.forEach(function (p) { p.classList.toggle("active", p === page); });
+        controls.forEach(function (b) {
+            var on = b.dataset.id === page.id;
+            b.classList.toggle("active-btn", on);
+            if (on) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
+        });
 
-    function typeEffect() {
-        const currentWord = words[wordIndex];
-
-        if (isDeleting) {
-            charIndex--;
-        } else {
-            charIndex++;
-        }
-        targetElement.textContent = currentWord.substring(0, charIndex);
-
-        let speed = isDeleting ? deletingSpeed : typingSpeed;
-
-        if (!isDeleting && charIndex === currentWord.length) {
-            isDeleting = true;
-            speed = pauseDelay;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length;
-            speed = nextWordDelay;
-        }
-
-        setTimeout(typeEffect, speed);
+        if (target && target !== page) target.scrollIntoView();
+        else window.scrollTo(0, 0);
+        if (fromUser) page.focus({ preventScroll: true });
     }
 
-    if (targetElement) {
-        typeEffect();
+    controls.forEach(function (b) {
+        b.addEventListener("click", function () {
+            var hash = "#" + b.dataset.id;
+            if (location.hash === hash) route(true); else location.hash = hash;
+        });
+    });
+    window.addEventListener("hashchange", function () { route(true); });
+    route(false);
+
+    // Light / dark theme (initial state is set by the inline script in <head>)
+    function syncTheme() {
+        var light = root.classList.contains("light-mode");
+        if (themeBtn) themeBtn.setAttribute("aria-pressed", String(light));
+        if (themeMeta) themeMeta.setAttribute("content", light ? "#ffffff" : "#191d2b");
     }
-
-    // --- Show More Courses ---
-    const toggleCoursesBtn = document.getElementById("toggle-courses");
-    const extraCourses = document.getElementById("extra-courses");
-
-    if (toggleCoursesBtn && extraCourses) {
-        toggleCoursesBtn.addEventListener("click", () => {
-            const isOpen = extraCourses.classList.toggle("open");
-            toggleCoursesBtn.setAttribute("aria-expanded", isOpen);
-            toggleCoursesBtn.innerHTML = isOpen
-                ? 'Show less <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>'
-                : 'Show all certificates <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>';
+    syncTheme();
+    if (themeBtn) {
+        themeBtn.addEventListener("click", function () {
+            var light = root.classList.toggle("light-mode");
+            try { localStorage.setItem("theme", light ? "light" : "dark"); } catch (e) {}
+            syncTheme();
         });
     }
 
-    // --- Theme Switcher ---
-    const themeToggleBtn = document.getElementById("theme-toggle");
-    const root = document.documentElement;
-
-    const themeMeta = document.querySelector('meta[name="theme-color"]');
-
-    function applyTheme(theme) {
-        if (theme === "light") {
-            root.setAttribute("data-theme", "light");
-        } else {
-            root.removeAttribute("data-theme");
-        }
-        // Colours the browser bar on phones to match the page
-        if (themeMeta) themeMeta.setAttribute("content", theme === "light" ? "#f7f5f1" : "#0b0e11");
+    // Hero photo: show initials if the image is missing
+    var photo = document.querySelector(".image img");
+    function noPhoto() { photo.parentNode.classList.add("no-img"); }
+    if (photo) {
+        photo.addEventListener("error", noPhoto);
+        if (photo.complete && photo.naturalWidth === 0) noPhoto();
     }
 
-    // (The saved theme is applied by the inline script in <head>, before first paint.)
-    applyTheme(root.getAttribute("data-theme") === "light" ? "light" : "dark");
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener("click", () => {
-            const nextTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-            applyTheme(nextTheme);
-            try {
-                localStorage.setItem("theme", nextTheme);
-            } catch (e) { /* storage blocked: theme just won't persist */ }
-        });
-    }
-
-    // --- Scroll Reveal: slide-up animation, plays once per element ---
-    const REVEAL_SELECTORS = [
-        ".hero-text > *",
-        ".hero-visual",
-        ".about-text > *",
-        ".skills-main",
-        ".skill-row",
-        ".projects > h2",
-        ".proj-card",
-        ".timeline-h2",
-        ".timeline-item",
-        ".cc_h2",
-        ".courses > .course-cert",
-        ".courses-toggle-btn",
-        "#contact > h2",
-        ".connect",
-        ".contact-icon",
-        ".site-footer"
-    ];
-
-    const STAGGER_MS = 90;      // delay between siblings revealed together
-    const MAX_STAGGER_MS = 360; // cap so long lists don't feel slow
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (!reduceMotion && "IntersectionObserver" in window) {
-        const targets = Array.from(document.querySelectorAll(REVEAL_SELECTORS.join(",")));
-        const siblingCount = new Map();
-
-        // Hide everything now (the loader is covering the page), reveal later.
-        targets.forEach((el) => {
-            const n = siblingCount.get(el.parentElement) || 0;
-            siblingCount.set(el.parentElement, n + 1);
-            el.style.setProperty("--reveal-delay", Math.min(n * STAGGER_MS, MAX_STAGGER_MS) + "ms");
-            el.classList.add("reveal");
-        });
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-                    const el = entry.target;
-                    observer.unobserve(el); // once only
-                    el.classList.add("active");
-                    // Drop the reveal classes afterwards so hover styles work normally.
-                    setTimeout(() => {
-                        el.classList.remove("reveal", "active");
-                        el.style.removeProperty("--reveal-delay");
-                    }, 1400);
-                });
-            },
-            { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
-        );
-
-        // Start once the AksVerse loader has left, so the first screen animates where it's seen.
-        window.onSiteReady(() => targets.forEach((el) => observer.observe(el)));
-    }
-
-    // --- Highlight the nav link for the section in view ---
-    const navLinks = document.querySelectorAll(".nav-bar a.nav-btn");
-    if ("IntersectionObserver" in window && navLinks.length) {
-        const spy = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-                    navLinks.forEach((link) => {
-                        if (link.getAttribute("href") === "#" + entry.target.id) {
-                            link.setAttribute("aria-current", "true");
-                        } else {
-                            link.removeAttribute("aria-current");
-                        }
-                    });
-                });
-            },
-            { rootMargin: "-45% 0px -50% 0px" }
-        );
-        document.querySelectorAll("main > section[id]").forEach((section) => spy.observe(section));
-    }
-
-    // --- Scroll-to-Top Button ---
-    const scrollTopBtn = document.getElementById("scroll-top");
-    const SHOW_AFTER_PX = 400;
-
-    if (scrollTopBtn) {
-        window.addEventListener("scroll", () => {
-            scrollTopBtn.classList.toggle("visible", window.scrollY > SHOW_AFTER_PX);
-        }, { passive: true });
-
-        scrollTopBtn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-    }
-});
+    // Typing effect
+    var el = document.getElementById("changing-txt");
+    var roles = ["Computer Science Student", "Front-End Developer", "C & Python Learner", "Video Editor"];
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { el.textContent = roles[0]; return; }
+    var r = 0, c = 0, del = false;
+    (function tick() {
+        var word = roles[r], wait = del ? 40 : 90;
+        el.textContent = word.slice(0, c);
+        if (!del && c === word.length) { del = true; wait = 1400; }
+        else if (del && c === 0) { del = false; r = (r + 1) % roles.length; wait = 350; }
+        else c += del ? -1 : 1;
+        setTimeout(tick, wait);
+    })();
+})();
