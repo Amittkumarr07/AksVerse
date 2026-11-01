@@ -80,7 +80,7 @@ export function TerminalPage() {
   return (
     <div className="hidden-page terminal-page">
       <HiddenHead
-        label="HIDDEN SPACE / 001"
+        label="Hidden page 1"
         title="A terminal for the curious."
         desc="A tiny command line interface. No server, no tricks. Just a few commands and a little personality."
       />
@@ -93,7 +93,7 @@ export function TerminalPage() {
             <i />
           </div>
           <span className="mono">visitor@aksverse: ~</span>
-          <span className="mono">SESSION {String(commandCount).padStart(3, '0')}</span>
+          <span className="mono">Session {String(commandCount).padStart(3, '0')}</span>
         </div>
 
         {/* Clicking anywhere in the body focuses the input */}
@@ -122,7 +122,7 @@ export function TerminalPage() {
         </div>
       </div>
 
-      <p className="terminal-hint mono">TRY: HELP · ABOUT · PROJECTS · SKILLS · CONTACT</p>
+      <p className="terminal-hint">Try: help, about, projects, skills, contact</p>
     </div>
   )
 }

@@ -11,9 +11,7 @@ interface HiddenHeadProps {
 export function HiddenHead({ label, title, desc }: HiddenHeadProps) {
   return (
     <div className="hidden-head">
-      <span className="mono">
-        <span className="eyebrow-dot" /> {label}
-      </span>
+      <span className="hidden-label">{label}</span>
       <h1>{title}</h1>
       <p>{desc}</p>
       <Link to="/" className="hidden-back">

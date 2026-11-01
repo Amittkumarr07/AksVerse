@@ -33,7 +33,7 @@ export function UsesPage() {
   return (
     <div className="hidden-page">
       <HiddenHead
-        label="HIDDEN SPACE / 004"
+        label="Hidden page 4"
         title="The things behind the work."
         desc="A living list of tools, habits and topics that are part of my current setup. It will change as I learn more."
       />

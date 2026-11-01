@@ -1,30 +1,34 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type PointerEvent } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import {
-  ArrowDownRight,
-  ArrowRight,
-  ArrowUpRight,
-  Code2,
-  Github,
-  Instagram,
-  Linkedin,
-  Palette,
-  Play,
-} from 'lucide-react'
-import { certificates, profile, projects } from '../data'
-import { Eyebrow } from '../components/Eyebrow'
+import { animate, motion, useMotionValue, useReducedMotion } from 'framer-motion'
+import { ArrowUpRight } from 'lucide-react'
+import { certificates, projects } from '../data'
 import { Layout } from '../components/Layout'
 import { ProjectCard } from '../components/ProjectCard'
-import { SkillGrid } from '../components/SkillGrid'
-import { reveal } from '../components/reveal'
+import { SkillList } from '../components/SkillList'
 
 /** Words that rotate inside the intro sentence. */
 const ROLES = ['developer', 'designer', 'video editor']
 const ROLE_CHANGE_MS = 2600
 
+/** How the glass lens glides after the pointer. */
+const LENS_SPRING = { type: 'spring', stiffness: 90, damping: 20, mass: 0.9 } as const
+
+/** Page-load sequence: each piece comes into focus a little after the last. */
+const focusIn = (delay: number) => ({
+  initial: { opacity: 0, y: 14, filter: 'blur(14px)' },
+  animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
+  transition: { duration: 0.9, delay, ease: 'easeOut' as const },
+})
+
 export function Home() {
   const [roleIndex, setRoleIndex] = useState(0)
+  const reducedMotion = useReducedMotion()
+
+  const heroRef = useRef<HTMLElement>(null)
+  const sphereRef = useRef<HTMLDivElement>(null)
+  const lensX = useMotionValue(0)
+  const lensY = useMotionValue(0)
 
   // Swap the highlighted role word every few seconds.
   useEffect(() => {
@@ -34,200 +38,155 @@ export function Home() {
     return () => window.clearInterval(timer)
   }, [])
 
+  /** The lens rests slightly off-centre over the glowing sphere. */
+  const restPosition = () => {
+    const hero = heroRef.current?.getBoundingClientRect()
+    const sphere = sphereRef.current?.getBoundingClientRect()
+    if (!hero || !sphere) return { x: 0, y: 0 }
+    return {
+      x: sphere.left - hero.left + sphere.width * 0.52,
+      y: sphere.top - hero.top + sphere.height * 0.92,
+    }
+  }
+
+  const placeLensAtRest = () => {
+    const rest = restPosition()
+    lensX.set(rest.x)
+    lensY.set(rest.y)
+  }
+
+  useLayoutEffect(() => {
+    placeLensAtRest()
+    window.addEventListener('resize', placeLensAtRest)
+    return () => window.removeEventListener('resize', placeLensAtRest)
+  }, [])
+
+  // The lens follows the pointer while it is over the hero (not on touch / reduced motion).
+  const followPointer = (event: PointerEvent<HTMLElement>) => {
+    if (reducedMotion || event.pointerType === 'touch') return
+    const hero = event.currentTarget.getBoundingClientRect()
+    animate(lensX, event.clientX - hero.left, LENS_SPRING)
+    animate(lensY, event.clientY - hero.top, LENS_SPRING)
+  }
+
+  const returnToRest = () => {
+    const rest = restPosition()
+    animate(lensX, rest.x, LENS_SPRING)
+    animate(lensY, rest.y, LENS_SPRING)
+  }
+
   return (
     <Layout>
       {/* ------------------------------------------------------------------ */}
-      {/* Hero                                                               */}
+      {/* Hero: the name, a glowing sphere and a glass lens that follows you */}
       {/* ------------------------------------------------------------------ */}
-      <section className="hero wrap">
-        <div className="hero-grid">
-          <div className="hero-copy">
-            <Eyebrow>INDEPENDENT MIND · BUILDING IN PUBLIC</Eyebrow>
+      <section className="hero wrap" ref={heroRef} onPointerMove={followPointer} onPointerLeave={returnToRest}>
+        <div className="hero-sphere" ref={sphereRef} aria-hidden />
+        <motion.div className="hero-lens" style={{ x: lensX, y: lensY }} aria-hidden />
 
-            {/* The name is the main heading of the page */}
-            <motion.h1
-              className="hero-name"
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              {profile.name}
-            </motion.h1>
+        <div className="hero-copy">
+          <h1 className="hero-name">
+            <motion.span className="name-part" {...focusIn(0.05)}>
+              Amit
+            </motion.span>
+            <motion.span className="name-part" {...focusIn(0.2)}>
+              Kumar
+            </motion.span>
+          </h1>
 
-            <motion.h2
-              className="hero-tagline"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.15 }}
-            >
-              Ideas into <span className="gradient-text">digital things.</span>
-            </motion.h2>
+          <motion.h2 className="hero-tagline" {...focusIn(0.45)}>
+            Ideas into digital things.
+          </motion.h2>
 
-            <p className="hero-lede">
-              CSE student and <span className="role-word">{ROLES[roleIndex]}</span> from Bihar,
-              exploring the space between thoughtful design and useful code.
-            </p>
+          <motion.p className="hero-lede" {...focusIn(0.6)}>
+            CSE student and <span className="role-word">{ROLES[roleIndex]}</span> from Bihar, exploring the space
+            between thoughtful design and useful code.
+          </motion.p>
 
-            <div className="hero-buttons">
-              <Link className="button button-primary" to="/projects">
-                Explore my work <ArrowUpRight size={17} />
-              </Link>
-              <Link className="button button-quiet" to="/about">
-                More about me <ArrowRight size={16} />
-              </Link>
-            </div>
-
-            {/* Quick facts - the counts update automatically from data.ts */}
-            <div className="hero-stats">
-              <div>
-                <strong>{projects.length}</strong>
-                <span>Projects</span>
-              </div>
-              <div>
-                <strong>{certificates.length}</strong>
-                <span>Certificates</span>
-              </div>
-              <div>
-                <strong>Tata Motors</strong>
-                <span>Internship · 2026</span>
-              </div>
-            </div>
-
-            <div className="hero-social">
-              <span className="mono">FIND ME ELSEWHERE</span>
-              <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">
-                <Github size={16} />
-              </a>
-              <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                <Linkedin size={16} />
-              </a>
-              <a href={profile.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
-                <Instagram size={16} />
-              </a>
-            </div>
-          </div>
-
-          {/* Decorative card on the right */}
-          <div className="hero-visual">
-            <div className="visual-glow" />
-            <div className="visual-grid" />
-
-            <div className="visual-top mono">
-              <span>AK / 001</span>
-              <span>CREATIVE DEVELOPER</span>
-            </div>
-
-            <div className="visual-center">
-              <div className="visual-ring ring-a" />
-              <div className="visual-ring ring-b" />
-              <div className="visual-core">
-                a<span>.</span>
-              </div>
-              <span className="float-chip chip-code">
-                <Code2 size={14} /> CODE
-              </span>
-              <span className="float-chip chip-design">
-                <Palette size={14} /> DESIGN
-              </span>
-              <span className="float-chip chip-edit">
-                <Play size={13} /> EDIT
-              </span>
-            </div>
-
-            <div className="visual-bottom">
-              <span>CURIOUS BY DEFAULT</span>
-            </div>
-            <div className="visual-side mono">AKSVERSE / EST. 2026</div>
-          </div>
+          <motion.div className="hero-buttons" {...focusIn(0.75)}>
+            <Link className="button button-primary" to="/projects">
+              See my work
+            </Link>
+            <Link className="button button-quiet" to="/about">
+              About me
+            </Link>
+          </motion.div>
         </div>
 
-        <div className="hero-foot">
-          <span className="scroll-cue">
-            <ArrowDownRight size={15} /> SCROLL TO EXPLORE
-          </span>
-          <span className="mono">PORTFOLIO — 2026</span>
-        </div>
+        {/* Quick facts - the counts update automatically from data.ts */}
+        <motion.div className="hero-stats glass" {...focusIn(0.95)}>
+          <div>
+            <strong>{projects.length}</strong>
+            <span>Projects</span>
+          </div>
+          <div>
+            <strong>{certificates.length}</strong>
+            <span>Certificates</span>
+          </div>
+          <div>
+            <strong>Tata Motors</strong>
+            <span>Internship, 2026</span>
+          </div>
+        </motion.div>
       </section>
 
       {/* ------------------------------------------------------------------ */}
-      {/* Intro strip                                                        */}
+      {/* Intro                                                              */}
       {/* ------------------------------------------------------------------ */}
-      <motion.section className="intro-strip" {...reveal()}>
-        <div className="wrap intro-inner">
-          <span className="mono">A LITTLE ABOUT ME</span>
-          <p>
-            Currently studying Computer Science & Engineering at{' '}
-            <strong>Government Polytechnic Raghopur, Supaul.</strong> I like turning ideas into
-            clean, useful experiences.
-          </p>
-          <Link to="/about">
-            Get to know me <ArrowUpRight size={15} />
-          </Link>
-        </div>
-      </motion.section>
+      <section className="section wrap intro">
+        <p className="intro-text">
+          Currently studying Computer Science & Engineering at{' '}
+          <strong>Government Polytechnic Raghopur, Supaul.</strong> I like turning ideas into clean, useful
+          experiences.
+        </p>
+        <Link className="text-link" to="/about">
+          More about me <ArrowUpRight size={16} />
+        </Link>
+      </section>
 
       {/* ------------------------------------------------------------------ */}
       {/* Selected work                                                      */}
       {/* ------------------------------------------------------------------ */}
-      <motion.section className="section wrap" {...reveal()}>
+      <section className="section wrap">
         <div className="section-heading">
-          <div>
-            <Eyebrow>SELECTED WORK</Eyebrow>
-            <h2>
-              Things I've <span className="gradient-text">put together.</span>
-            </h2>
-          </div>
+          <h2>Selected work</h2>
           <Link className="text-link" to="/projects">
             All projects <ArrowUpRight size={16} />
           </Link>
         </div>
 
-        <div className="project-grid">
+        <div className="project-list">
           {projects.slice(0, 2).map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
+            <ProjectCard key={project.title} project={project} flip={index % 2 === 1} />
           ))}
         </div>
-      </motion.section>
+      </section>
 
       {/* ------------------------------------------------------------------ */}
       {/* Toolkit                                                            */}
       {/* ------------------------------------------------------------------ */}
-      <motion.section className="section skill-band" {...reveal()}>
-        <div className="wrap">
-          <div className="section-heading">
-            <div>
-              <Eyebrow>THE TOOLKIT</Eyebrow>
-              <h2>
-                Curiosity, then <span className="gradient-text">craft.</span>
-              </h2>
-            </div>
-            <Link className="text-link" to="/about">
-              Explore skills <ArrowUpRight size={16} />
-            </Link>
-          </div>
-          <SkillGrid />
+      <section className="section wrap">
+        <div className="section-heading">
+          <h2>Toolkit</h2>
+          <Link className="text-link" to="/about">
+            More about my skills <ArrowUpRight size={16} />
+          </Link>
         </div>
-      </motion.section>
+        <SkillList />
+      </section>
 
       {/* ------------------------------------------------------------------ */}
-      {/* Call to action                                                     */}
+      {/* Closing call to action                                             */}
       {/* ------------------------------------------------------------------ */}
-      <motion.section className="cta-section wrap" {...reveal()}>
-        <div className="cta-panel">
-          <div className="cta-orb" />
-          <Eyebrow>HAVE SOMETHING IN MIND?</Eyebrow>
-          <h2>
-            Let's make
-            <br />
-            <span className="gradient-text">it real.</span>
-          </h2>
-          <p>Have an idea, a project, or just want to talk about building things?</p>
+      <section className="section wrap">
+        <div className="cta-panel glass">
+          <h2>Have an idea? Let's build it.</h2>
+          <p>A project, a collaboration, or just a conversation about building things.</p>
           <Link className="button button-primary" to="/contact">
-            Start a conversation <ArrowUpRight size={17} />
+            Get in touch
           </Link>
-          <span className="cta-index mono">AK / 2026</span>
         </div>
-      </motion.section>
+      </section>
     </Layout>
   )
 }

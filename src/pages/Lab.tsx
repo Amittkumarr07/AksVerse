@@ -22,7 +22,7 @@ export function LabPage() {
   return (
     <div className="hidden-page">
       <HiddenHead
-        label="HIDDEN SPACE / 002"
+        label="Hidden page 2"
         title="The experiment lab."
         desc="A small sandbox for visual ideas. Change a few parameters and see what happens."
       />
@@ -39,13 +39,13 @@ export function LabPage() {
           <div className="lab-preview-core">
             a<span>.</span>
           </div>
-          <div className="lab-preview-label mono">LIVE EXPERIMENT / 01</div>
+          <div className="lab-preview-label">Live preview</div>
           <div className="lab-preview-caption">{text}</div>
         </div>
 
         {/* Controls */}
         <div className="lab-controls">
-          <span className="mono">EXPERIMENT CONTROLS</span>
+          <span className="lab-controls-title">Controls</span>
 
           <label className="control-row">
             <span>Ambient glow</span>

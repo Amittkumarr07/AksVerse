@@ -69,7 +69,8 @@ Almost everything you will want to change is in `src/data.ts`:
 - `certificates`, `skills`, `timeline`
 
 Page-specific text (for example the About paragraphs) lives in the matching file in `src/pages/`.
-Colours and fonts are CSS variables at the top of `src/styles.css`.
+Colours and fonts are CSS variables at the top of `src/styles.css` (dark navy by default, with a pale-blue light mode).
+The hero's glass lens lives in `src/pages/Home.tsx`; its look is `.hero-lens` and `.hero-sphere` in the stylesheet.
 
 ## Notes
 - The contact form opens the Google Form from the supplied README.

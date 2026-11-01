@@ -4,7 +4,7 @@ import { Brand } from './Brand'
 
 export function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer wrap">
       <div className="footer-top">
         <div>
           <Brand />
@@ -26,7 +26,7 @@ export function Footer() {
 
       <div className="footer-bottom">
         <span>© 2026 AksVerse. Built with curiosity.</span>
-        <span className="mono">BIHAR · INDIA</span>
+        <span>Bihar, India</span>
       </div>
     </footer>
   )

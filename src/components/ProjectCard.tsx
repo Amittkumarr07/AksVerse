@@ -1,78 +1,74 @@
-import { motion } from 'framer-motion'
+import type { PointerEvent } from 'react'
 import { ArrowUpRight, Github } from 'lucide-react'
 import type { Project } from '../data'
-import { reveal } from './reveal'
 
 interface ProjectCardProps {
   project: Project
-  /** Position in the grid - used to stagger the reveal animation. */
-  index?: number
+  /** Put the preview on the right instead of the left. */
+  flip?: boolean
 }
 
 /** "github.com/user/repo" or "theamitkumar.in" - shown in the fake browser bar. */
 const shortUrl = (url: string) => url.replace(/^https?:\/\//, '')
 
-export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
-  return (
-    <motion.article className="project-card" {...reveal((index % 2) * 0.1)}>
-      {/* Decorative art: a small browser window with the project's mark inside */}
-      <div className={`project-art ${project.tone}`}>
-        <span className="art-index">{project.number} / SELECTED WORK</span>
-        <span className="art-orbit orbit-one" />
-        <span className="art-orbit orbit-two" />
+export function ProjectCard({ project, flip = false }: ProjectCardProps) {
+  // Tell the CSS where the pointer is, so the card can glow under the cursor.
+  const trackPointer = (event: PointerEvent<HTMLElement>) => {
+    const box = event.currentTarget.getBoundingClientRect()
+    event.currentTarget.style.setProperty('--mx', `${event.clientX - box.left}px`)
+    event.currentTarget.style.setProperty('--my', `${event.clientY - box.top}px`)
+  }
 
-        <div className="art-window">
-          <div className="art-window-bar">
-            <span className="art-dots">
+  return (
+    <article className={`project glass ${flip ? 'flip' : ''}`} onPointerMove={trackPointer}>
+      {/* A small browser window standing in for a screenshot */}
+      <div className={`project-preview tone-${project.tone}`}>
+        <div className="browser">
+          <div className="browser-bar">
+            <span className="browser-dots">
               <i />
               <i />
               <i />
             </span>
-            <span className="art-url">{shortUrl(project.live ?? project.github)}</span>
+            <span className="browser-url">{shortUrl(project.live ?? project.github)}</span>
           </div>
-          <div className="art-window-body">
-            <span className="art-mark">{project.mark}</span>
-            <span className="art-lines">
+          <div className="browser-body">
+            <span className="browser-mark">{project.mark}</span>
+            <span className="browser-lines">
               <i />
               <i />
               <i />
             </span>
           </div>
         </div>
-
-        <span className="art-corner">
-          <ArrowUpRight size={19} />
-        </span>
       </div>
 
       <div className="project-info">
-        <div className="project-meta">
-          <span>{project.type}</span>
-          <span>{project.year}</span>
-        </div>
-
+        <p className="project-meta">
+          {project.type}, {project.year}
+        </p>
         <h3>{project.title}</h3>
-        <p>{project.description}</p>
+        <p className="project-desc">{project.description}</p>
 
-        <div className="tag-row">
+        <ul className="tag-row">
           {project.stack.map((tech) => (
-            <span className="tag" key={tech}>
+            <li className="tag" key={tech}>
               {tech}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <div className="project-links">
-          <a href={project.github} target="_blank" rel="noreferrer">
-            <Github size={15} /> Source code <ArrowUpRight size={13} />
+          <a className="pill-link" href={project.github} target="_blank" rel="noreferrer">
+            <Github size={15} /> Source code
           </a>
           {project.live && (
-            <a href={project.live} target="_blank" rel="noreferrer">
-              Live site <ArrowUpRight size={13} />
+            <a className="pill-link" href={project.live} target="_blank" rel="noreferrer">
+              Live site <ArrowUpRight size={14} />
             </a>
           )}
         </div>
       </div>
-    </motion.article>
+    </article>
   )
 }

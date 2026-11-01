@@ -23,6 +23,13 @@ function App() {
   return (
     // reducedMotion="user": visitors who prefer less motion get no sliding animations.
     <MotionConfig reducedMotion="user">
+      {/* Soft blue light behind everything - this is what the glass panels blur */}
+      <div className="backdrop" aria-hidden>
+        <span className="orb orb-a" />
+        <span className="orb orb-b" />
+        <span className="orb orb-c" />
+      </div>
+
       <Header dark={dark} setDark={setDark} />
 
       <AnimatePresence mode="wait">

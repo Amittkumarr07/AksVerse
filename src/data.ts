@@ -194,21 +194,21 @@ export interface TimelineEntry {
 
 export const timeline: TimelineEntry[] = [
   {
-    date: '2025 — PRESENT',
+    date: '2025 – present',
     title: 'Diploma in Computer Science & Engineering',
     place: 'Government Polytechnic Raghopur, Supaul · SBTE Bihar',
     icon: GraduationCap,
     desc: 'Studying computer science fundamentals, programming, web technologies and problem-solving.',
   },
   {
-    date: 'JUNE — JULY 2026',
+    date: 'June – July 2026',
     title: 'Second-year internship',
     place: 'Tata Motors',
     icon: BriefcaseBusiness,
     desc: 'Hands-on internship applying core engineering and technical skills in an industry setting.',
   },
   {
-    date: '2023 — 2025',
+    date: '2023 – 2025',
     title: 'Matriculation · Class IX & X',
     place: 'Dini International School, Gaya · CBSE Delhi',
     icon: Award,

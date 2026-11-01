@@ -53,7 +53,7 @@ export function EasterPage() {
   return (
     <div className="hidden-page">
       <HiddenHead
-        label="HIDDEN SPACE / 003"
+        label="Hidden page 3"
         title="A few things are hidden."
         desc="A small collection of details for people who explore instead of just scrolling. Nothing serious. That's the point."
       />
@@ -68,11 +68,11 @@ export function EasterPage() {
               key={clue.n}
               onClick={() => uncover(clue.n)}
             >
-              <span className="mono">SECRET 0{clue.n}</span>
+              <span className="egg-number">Secret {clue.n}</span>
               <div className="egg-symbol">{isFound ? <Check size={25} /> : <Command size={25} />}</div>
               <h3>{clue.title}</h3>
               <p>{isFound ? clue.desc : 'Click to uncover this detail.'}</p>
-              <span className="egg-status">{isFound ? 'DISCOVERED' : 'UNDISCOVERED'}</span>
+              <span className="egg-status">{isFound ? 'Discovered' : 'Not found yet'}</span>
             </button>
           )
         })}
@@ -86,7 +86,7 @@ export function EasterPage() {
       )}
 
       <div className="egg-progress">
-        <span className="mono">DISCOVERED</span>
+        <span>Discovered</span>
         <strong>{found.length} / 3</strong>
         <div className="progress-track">
           <i style={{ width: `${(found.length / CLUES.length) * 100}%` }} />

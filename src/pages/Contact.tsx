@@ -1,10 +1,8 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import { ArrowUpRight, Check, Copy, Github, Instagram, Linkedin, Send } from 'lucide-react'
 import { profile } from '../data'
 import { Layout } from '../components/Layout'
 import { PageHead } from '../components/PageHead'
-import { reveal } from '../components/reveal'
 
 export function Contact() {
   const [copied, setCopied] = useState(false)
@@ -18,67 +16,54 @@ export function Contact() {
   return (
     <Layout>
       <PageHead
-        eyebrow="THE NEXT TAB COULD BE A CONVERSATION"
         title={
           <>
             Have a good idea?
             <br />
-            <span className="gradient-text">Let's talk.</span>
+            <span className="dim">Let's talk.</span>
           </>
         }
         sub="For collaborations, project ideas, opportunities or a simple hello. My inbox is open."
       />
 
-      <motion.section className="wrap contact-layout" {...reveal()}>
+      <section className="wrap contact-layout">
         {/* Left: email + social links */}
         <div className="contact-main">
-          <div className="contact-email">
-            <span className="mono">EMAIL ME DIRECTLY</span>
-            <a href={`mailto:${profile.email}`}>
-              {profile.email}
-              <ArrowUpRight size={20} />
-            </a>
-            <button className="copy-button" onClick={copyEmail}>
-              {copied ? <Check size={14} /> : <Copy size={14} />} {copied ? 'Copied' : 'Copy email'}
-            </button>
-          </div>
+          <p className="contact-label">Email me directly</p>
+          <a className="contact-email-link" href={`mailto:${profile.email}`}>
+            {profile.email}
+          </a>
+          <button className="pill-link copy-button" onClick={copyEmail}>
+            {copied ? <Check size={14} /> : <Copy size={14} />} {copied ? 'Copied' : 'Copy email'}
+          </button>
 
+          <p className="contact-label">Find me online</p>
           <div className="contact-socials">
-            <span className="mono">FIND ME ONLINE</span>
-            <a href={profile.github} target="_blank" rel="noreferrer">
-              <Github />
-              GitHub
-              <ArrowUpRight size={15} />
+            <a className="pill-link" href={profile.github} target="_blank" rel="noreferrer">
+              <Github size={16} /> GitHub
             </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer">
-              <Linkedin />
-              LinkedIn
-              <ArrowUpRight size={15} />
+            <a className="pill-link" href={profile.linkedin} target="_blank" rel="noreferrer">
+              <Linkedin size={16} /> LinkedIn
             </a>
-            <a href={profile.instagram} target="_blank" rel="noreferrer">
-              <Instagram />
-              Instagram
-              <ArrowUpRight size={15} />
+            <a className="pill-link" href={profile.instagram} target="_blank" rel="noreferrer">
+              <Instagram size={16} /> Instagram
             </a>
           </div>
         </div>
 
         {/* Right: contact form card (opens an external Google Form) */}
-        <div className="contact-form-card">
-          <div className="form-icon">
-            <Send size={22} />
-          </div>
+        <div className="contact-form-card glass">
+          <span className="form-icon">
+            <Send size={20} />
+          </span>
           <h3>Prefer a contact form?</h3>
-          <p>
-            Use the short form and share a little about what you have in mind. It opens the
-            contact form configured for this portfolio.
-          </p>
+          <p>Share a little about what you have in mind with a short form.</p>
           <a className="button button-primary" href={profile.form} target="_blank" rel="noreferrer">
             Open contact form <ArrowUpRight size={16} />
           </a>
-          <span className="mono form-note">EXTERNAL GOOGLE FORM</span>
+          <span className="form-note">Opens Google Forms in a new tab.</span>
         </div>
-      </motion.section>
+      </section>
     </Layout>
   )
 }

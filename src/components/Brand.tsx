@@ -4,13 +4,8 @@ import { Link } from 'react-router-dom'
 export function Brand() {
   return (
     <Link to="/" className="brand" aria-label="AksVerse home">
-      <span className="brand-mark">
-        a<span>.</span>
-      </span>
-      <span>
-        AksVerse
-        <span className="brand-sub">/ AMIT KUMAR</span>
-      </span>
+      <span className="brand-mark">a.</span>
+      <span className="brand-name">AksVerse</span>
     </Link>
   )
 }

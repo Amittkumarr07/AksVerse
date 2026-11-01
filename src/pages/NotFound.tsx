@@ -1,19 +1,21 @@
 import { Link } from 'react-router-dom'
-import { ArrowLeft } from 'lucide-react'
+import { Layout } from '../components/Layout'
 
 export function NotFound() {
   return (
-    <div className="not-found wrap">
-      <span className="mono">ERROR / 404</span>
-      <h1>
-        This page wandered
-        <br />
-        <span className="gradient-text">off the map.</span>
-      </h1>
-      <p>The URL doesn't point to anything here.</p>
-      <Link className="button button-primary" to="/">
-        Back to home <ArrowLeft size={16} />
-      </Link>
-    </div>
+    <Layout>
+      <section className="not-found wrap">
+        <p className="contact-label">Error 404</p>
+        <h1>
+          This page wandered
+          <br />
+          <span className="dim">off the map.</span>
+        </h1>
+        <p>That address doesn't lead anywhere on this site.</p>
+        <Link className="button button-primary" to="/">
+          Back to home
+        </Link>
+      </section>
+    </Layout>
   )
 }
