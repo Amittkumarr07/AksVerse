@@ -735,7 +735,7 @@ ul {
 .tone-pink   { --tone-a: #1ec6bd; --tone-b: #073c48; }
 
 .browser {
-  width: min(100%, 340px);
+  width: min(100%, 420px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 14px;
   background: rgba(8, 12, 30, 0.5);
@@ -810,6 +810,14 @@ ul {
 .browser-lines i:nth-child(1) { width: 86%; }
 .browser-lines i:nth-child(2) { width: 60%; }
 .browser-lines i:nth-child(3) { width: 74%; background: rgba(255, 255, 255, 0.3); }
+
+.browser-shot {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top; /* show the top of the page, where the hero usually is */
+}
 
 .project-info {
   position: relative;

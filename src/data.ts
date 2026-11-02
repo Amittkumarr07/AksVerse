@@ -40,6 +40,8 @@ export const nav: [label: string, path: string][] = [
 // Projects
 // `tone` picks the colour of the project card art: 'violet' | 'blue' | 'pink'
 // `live` is optional - leave it out when a project has no hosted version.
+// `image` is optional - a screenshot saved in the `public/projects/` folder,
+//   e.g. image: '/projects/aksverse.png'. Without it, a placeholder is shown.
 // ---------------------------------------------------------------------------
 export interface Project {
   title: string
@@ -49,6 +51,7 @@ export interface Project {
   stack: string[]
   github: string
   live?: string
+  image?: string
   mark: string
   tone: 'violet' | 'blue' | 'pink'
   number: string

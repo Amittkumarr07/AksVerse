@@ -32,14 +32,23 @@ export function ProjectCard({ project, flip = false }: ProjectCardProps) {
             </span>
             <span className="browser-url">{shortUrl(project.live ?? project.github)}</span>
           </div>
-          <div className="browser-body">
-            <span className="browser-mark">{project.mark}</span>
-            <span className="browser-lines">
-              <i />
-              <i />
-              <i />
-            </span>
-          </div>
+          {project.image ? (
+            <img
+              className="browser-shot"
+              src={project.image}
+              alt={`Screenshot of ${project.title}`}
+              loading="lazy"
+            />
+          ) : (
+            <div className="browser-body">
+              <span className="browser-mark">{project.mark}</span>
+              <span className="browser-lines">
+                <i />
+                <i />
+                <i />
+              </span>
+            </div>
+          )}
         </div>
       </div>
 
