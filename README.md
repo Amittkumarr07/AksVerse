@@ -1,4 +1,4 @@
-# AksVerse 2.0 — Amit Kumar's Portfolio
+# AksVerse — Amit Kumar's Portfolio
 
 A React + TypeScript portfolio for Amit Kumar, built with Vite, React Router, Framer Motion and custom CSS.
 
